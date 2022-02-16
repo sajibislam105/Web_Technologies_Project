@@ -7,6 +7,14 @@
 </head>
 <body>
 	<h1>Registration Successful</h1>
+
+	<?php
+
+		var_dump($_REQUEST)
+		
+	?>
+
+	<br>
 	<p>Thank you for registering.</p>
 
 	<a href="registration.html">Go BacK
