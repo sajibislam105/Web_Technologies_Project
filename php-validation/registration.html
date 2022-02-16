@@ -9,13 +9,96 @@
 	<h1>Registration Form</h1>	
 	<form action="RegistrationAction.php" method="POST" novalidate>
 
-		<label for="fname">First Name*:</label>
-		<input type="text" name="firstname" id="fname" size="50" autofocus>
-		
-		<br><br>
+	<fieldset>
+		<legend>Group 1: Basic Information</legend>
 
-		<label for="lname">Last Name*:</label>
-		<input type="text" name="lasttname" id="lname" size="50">
+		<br>
+			<label for="fname">First Name*:</label>
+			<input type="text" name="firstname" id="fname" size="50" autofocus>
+			
+			<br><br>
+
+			<label for="lname">Last Name*:</label>
+			<input type="text" name="lasttname" id="lname" size="50">
+
+			<br><br>
+
+			<label>Select Gender*:</label>
+			<input type="radio" name="gender" id="male" value="Male"><label for="male">Male</label>
+			<input type="radio" name="gender" id="female" value="Female"><label for="female">Female</label>
+			
+			<br><br>
+
+			<label for="DOB">Date of Birth*</label>
+			<input type="date" name="DOB" id="DOB" value="DOB">
+
+			<br><br>	
+
+			<label for="Religion">Choose your Religion*</label>
+			<select name="Religion" id="Religion" required>
+				<option value="None"></option>
+				<option value="Islam">Islam</option>
+				<option value="Hindu">Hindu</option>
+				<option value="Christian">Christian</option>
+				<option value="Buddhist">Buddhist</option>
+				<option value="Others">Others</option>
+			</select>			
+	</fieldset>
+
+			<br><br>
+
+	<fieldset>
+		<legend>Group 2: Contact Information</legend>
+
+			<br>
+			<label for="Present Address">Present Address*:</label>
+			<textarea name="Present Address" id="Present Address" placeholder="Enter your present address..."></textarea>
+			
+			<br><br>
+
+			<label for="Permanent Address">Present Address:</label>
+			<textarea name="Permanent Address" id="Permanent Address" placeholder="Enter your permanent address..."></textarea>
+			
+			<br><br>		
+
+			<label for="phone">Phone:</label>
+			<input type="tel" name="Phone" id="phone" placeholder="Enter your phone number...">
+
+			<br><br>
+
+			<label for="email">Email*:</label>
+			<input type="email" name="Email" id="email" placeholder="Enter your email here...">
+
+			<br><br>
+
+			<label for="pwl">Personal Website Link:</label>
+			<input type="URL" name="pwl" id="pwl" placeholder="URL...">					
+	</fieldset>
+
+			<br><br>
+
+	<fieldset>
+			<legend>Group 3: Credemtials</legend>
+
+			<br>
+			<label for="uname">Username*:</label>
+			<input type="text" name="Username" id="uname" size="25" maxlength="5" placeholder="Maximum 5 character can be used" required>
+
+			<br><br>
+
+			<label for="password">Password*:</label>
+			<input type="password" name="password" id="password" placeholder="Type your password" required>
+
+			<br><br>
+
+			<label for="cfpassword">Confirm Password*:</label>
+			<input type="password" name="cfpassword" id="cfpassword"  placeholder="Re-type your password" required>
+
+
+	</fieldset>
+
+			<br><br>
+			<input type="submit" name="submit" value="Submit">
 
 	</form>
 
