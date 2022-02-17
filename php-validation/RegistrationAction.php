@@ -10,7 +10,6 @@
 
 	<?php
 
-		var_dump($_POST);
 		function test($data)	
 		{
 			$date = trim($data);
@@ -20,31 +19,40 @@
 		}
 		
 	?>
-	<hr><hr>
 
 	<fieldset>
-		<legend>Group 1: Basic Information</legend>
+		<legend>Group 1: Basic Information</legend>		
 	<?php 
 
 		if ($_SERVER['REQUEST_METHOD'] === "POST")
-		{
+		{			
 			$firstname = test($_POST['firstname']);
-			echo "First Name: " . $firstname;
-			echo "<br><br>";
-
 			$lastname = test($_POST['lastname']);
-			echo "Last Name: " . $lastname;
-			echo "<br><br>";
-			
-			
-			echo "Gender: " . $_POST['gender'];
-			echo "<br><br>";
-			
-			echo "Date of Birth: " . $_POST['DOB'];
-			echo "<br><br>";
+				
+			if (empty($lastname) || empty($firstname)) 
+			{
+				echo "Fill up the form properly";
+				echo "<br><br>";
+				die();					
+			}				
+			else
+			{			
+				
+				echo "First Name: " . $firstname;
+				echo "<br><br>";
+				
+				echo "Last Name: " . $lastname;
+				echo "<br><br>";
+			}	
+				echo "Gender: " . $_POST['gender'];
+				echo "<br><br>";
 
-			$Religion = test($_POST['Religion']);
-			echo "Religion: " . $Religion;
+				$DOB = $_POST['DOB'];
+				echo "Date of Birth: " . $DOB;
+				echo "<br><br>";
+			
+				$Religion = test($_POST['Religion']);
+				echo "Religion: " . $Religion;
 		}
 		else
 		{
@@ -60,23 +68,47 @@
 		if ($_SERVER['REQUEST_METHOD'] === "POST")
 		{
 			$Present_Address = test($_POST['Present_Address']);
-			echo "Present Address: " . $Present_Address;
-			echo "<br><br>";
 
-			$Permanent_Address = test($_POST['Permanent_Address']);
-			echo "Permanent Address: " . $Permanent_Address;
-			echo "<br><br>";
+			if (empty($Present_Address)) 
+			{	
+				echo "Fill up the form properly";
+				echo "<br><br>";
+				die();
+			}
+			else
+			{					
+				echo "Present Address: " . $Present_Address;
+				echo "<br><br>";
 
-			$Phone = test($_POST['Phone']);
-			echo "Phone: " . $Phone;
-			echo "<br><br>";
+				$Permanent_Address = test($_POST['Permanent_Address']);
+				if (empty($Permanent_Address)) 
+				{	
+				 	//			
+				}
+				else
+				{
+					echo "Permanent Address: " . $Permanent_Address;
+					echo "<br><br>";
+				}
 
-			$Email = test($_POST['Email']);
-			echo "Email: " . $Email;
-			echo "<br><br>";
+				$Phone = test($_POST['Phone']);
+				echo "Phone: " . $Phone;
+				echo "<br><br>";
+			}
+				$Email = test($_POST['Email']);
+				if(filter_var($Email))
+				{	
+					echo "Email: " . $Email;
+					echo "<br><br>";
+				}
+				else
+				{
+					echo "Invalid email Address.";
+					echo "<br><br>";
+				}
 
-			$pwl = test($_POST['pwl']);
-			echo "Personal Website Link: " . $pwl;			
+				$pwl = test($_POST['pwl']);
+				echo "Personal Website Link: " . $pwl;
 		}
 		else
 		{
@@ -89,19 +121,35 @@
 		<legend><b>Group 3: Credentials</b></legend>
 	<?php 
 		if ($_SERVER['REQUEST_METHOD'] === "POST")
-		{
-			$uname = test($_POST['uname']);			
-			echo "Username: " . $uname;
-			echo "<br><br>";
-			
-			echo "Password: " . $_POST['password'];
-			echo "<br><br>";
-			echo "Confirm Password: " . $_POST['cfpassword'];
-		}
+		{	
+			$uname = test($_POST['uname']);
+			if (empty($uname))
+			{
+				echo "Invalid Username";
+				echo "<br><br>";
+				die();
+			}
+			else
+			{
+				$uname = test($_POST['uname']);			
+				echo "Username: " . $uname;
+				echo "<br><br>";
+			}
+
+			if ($_POST['password'] == $_POST['cfpassword'] ) {
+				echo "Password Matched";	
+			}
+			else
+			{
+				echo "Confirm Password did not match";
+			}
+				
+		}	
 		else
 		{
 			echo "Can not process GET REQUEST METHOD";
 		}
+			
 	?>
 	</fieldset>
 	<p style="color: green;">Thank you for registering.</p>
