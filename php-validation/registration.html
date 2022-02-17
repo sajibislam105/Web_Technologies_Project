@@ -7,19 +7,19 @@
 </head>
 <body>
 	<h1>Registration Form</h1>	
-	<form action="RegistrationAction.php" method="POST" novalidate>
+	<form action="RegistrationAction.php" method="POST" novalidate enctype="application/x-www-form-urlencoded">
 
 	<fieldset>
 		<legend>Group 1: Basic Information</legend>
 
 		<br>
 			<label for="fname">First Name*:</label>
-			<input type="text" name="firstname" id="fname" size="50" required autofocus>
+			<input type="text" name="firstname" id="fname" size="20" required autofocus>
 			
 			<br><br>
 
 			<label for="lname">Last Name*:</label>
-			<input type="text" name="lasttname" id="lname" size="50" required>
+			<input type="text" name="lastname" id="lname" size="20" required>
 
 			<br><br>
 
@@ -51,13 +51,13 @@
 		<legend>Group 2: Contact Information</legend>
 
 			<br>
-			<label for="Present Address">Present Address*:</label>
-			<textarea rows="3" cols="50" name="Present Address" id="Present Address" placeholder="Enter your present address..." required></textarea>
+			<label for="Present_Address">Present Address*:</label>
+			<textarea rows="3" cols="50" name="Present Address" id="Present_Address" placeholder="Enter your present address..." required></textarea>
 			
 			<br><br>
 
-			<label for="Permanent Address">Present Address: </label>
-			<textarea rows="3" cols="51"  name="Permanent Address" id="Permanent Address" placeholder="Enter your permanent address..."></textarea>
+			<label for="Permanent_Address">Present Address: </label>
+			<textarea rows="3" cols="51"  name="Permanent Address" id="Permanent_Address" placeholder="Enter your permanent address..."></textarea>
 			
 			<br><br>		
 
@@ -66,8 +66,8 @@
 
 			<br><br>
 
-			<label for="email">Email*:</label>
-			<input type="email" name="Email" id="email" placeholder="Enter your email here..." required>
+			<label for="Email">Email*:</label>
+			<input type="Email" name="Email" id="Email" placeholder="Enter your email here..." required>
 
 			<br><br>
 
@@ -83,7 +83,7 @@
 
 			<br>
 			<label for="uname">Username*:</label>
-			<input type="text" name="Username" id="uname" size="25"  placeholder="Maximum 5 character can be used" maxlength="5" required>
+			<input type="text" name="uname" id="uname" size="25"  placeholder="Maximum 5 character can be used" maxlength="5" required>
 
 			<br><br>
 
