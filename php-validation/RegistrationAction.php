@@ -72,8 +72,7 @@
 			if (empty($Present_Address)) 
 			{	
 				echo "Fill up the form properly";
-				echo "<br><br>";
-				die();
+				echo "<br><br>";				
 			}
 			else
 			{					
@@ -137,7 +136,11 @@
 			}
 
 			if ($_POST['password'] == $_POST['cfpassword'] ) {
-				echo "Password Matched";	
+				echo "Password Matched";
+											?>
+				<p style="color: green;">Thank you for registering.</p>
+	<?php
+
 			}
 			else
 			{
@@ -152,7 +155,7 @@
 			
 	?>
 	</fieldset>
-	<p style="color: green;">Thank you for registering.</p>
+	
 
 	<a href="registration.html">Go BacK
 </body>
