@@ -9,7 +9,6 @@
 	<h1 style="color: blueviolet;">Registration Action</h1>	
 	
 	<?php
-		$checker = false;
 		function test($data)	
 		{
 			$date = trim($data);
@@ -32,7 +31,11 @@
 			if (empty($lastname) || empty($firstname) || !isset($_POST['gender']) || !isset($_POST['DOB']) || !isset($Religion)) 
 			{
 				echo "Fill up the form properly";
-				echo "<br><br>";							
+				echo "<br><br>";
+				?>
+				<p style="color:red;"><b>Registration Failed</b></p>
+				<?php
+				die();					
 			}				
 			else
 			{	
@@ -59,22 +62,26 @@
 		<legend>Group 2: Contact Information</legend>
 	<?php 
 
-		if ($_SERVER['REQUEST_METHOD'] === "POST" /*&& $checker == '1'*/)
+		if ($_SERVER['REQUEST_METHOD'] === "POST")
 		{
 			$Present_Address = test($_POST['Present_Address']);
-			//$Email = test($_POST['Email']);
+			$Permanent_Address = test($_POST['Permanent_Address']);
+			$Email = test($_POST['Email']);
 
 			if (empty($Present_Address) || empty($Email)) 
 			{	
 				echo "Fill up the form properly";
-				echo "<br><br>";				
+				echo "<br><br>";
+				?>
+				<p style="color:red;"><b>Registration Failed</b></p>
+				<?php
+				die();
 			}
 			else
 			{					
 				echo "Present Address: " . $Present_Address;
 				echo "<br><br>";
-
-				$Permanent_Address = test($_POST['Permanent_Address']);
+				
 				if (empty($Permanent_Address)) 
 				{	
 				 	//			
@@ -85,13 +92,17 @@
 					echo "<br><br>";
 				}
 
-				$Phone = test($_POST['Phone']);
-				echo "Phone: " . $Phone;
-				echo "<br><br>";
-			
-				//$Email = test($_POST['Email']);
-				$Email = $_POST['Email'];
-				if(filter_var($Email))
+				if (empty($Phone)) 
+				{
+
+				}
+				else
+				{
+					$Phone = test($_POST['Phone']);
+					echo "Phone: " . $Phone;
+					echo "<br><br>";			
+				}
+				if(filter_var($Email, FILTER_VALIDATE_EMAIL))
 				{	
 					echo "Email: " . $Email;
 					echo "<br><br>";
@@ -100,11 +111,16 @@
 				{
 					echo "Invalid email Address.";
 					echo "<br><br>";
+					die();
+				}				
+				if (empty($pwl)) {
+					//
 				}
-			
+				else
+				{
 				$pwl = test($_POST['pwl']);
-				echo "Personal Website Link: " . $pwl;
-				$checker =2;
+				echo "Personal Website Link: " . $pwl;			
+				}
 			}
 		}
 		else
@@ -117,7 +133,7 @@
 	<fieldset>
 		<legend><b>Group 3: Credentials</b></legend>
 	<?php 
-		if ($_SERVER['REQUEST_METHOD'] === "POST"/* && $checker == 2*/)
+		if ($_SERVER['REQUEST_METHOD'] === "POST")
 		{	
 			$uname = test($_POST['uname']);
 			if (empty($uname) || empty($_POST['password']))
@@ -125,20 +141,16 @@
 				echo "Fill up the form properly";				
 				?>
 				<p style="color:red;"><b>Registration Failed</b></p>
-				<?php								
+				<?php
+				die();
 			}
 			else
-			{
-						
+			{						
 				echo "Username: " . $uname;
 				echo "<br><br>";					
 				if ($_POST['password'] == $_POST['cfpassword'] ) 
 				{
 					echo "Password Matched";
-											?>
-					<p style="color: green;">Thank you for Registration.</p>
-			
-											<?php
 				}
 				else
 				{
@@ -149,11 +161,9 @@
 		else
 		{
 			echo "Can not process GET REQUEST METHOD";
-		}
-			
+		}			
 	?>
-	</fieldset>
-	
+	</fieldset>	
 	<br>
 	<a href="registration.html">Go Back
 </body>
