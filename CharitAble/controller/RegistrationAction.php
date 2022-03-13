@@ -136,8 +136,9 @@
 	<?php 
 		if ($_SERVER['REQUEST_METHOD'] === "POST")
 		{	
-			$username = test($_POST['uname']);			
-			if (empty($username) || empty($_POST['password']))
+			$username = test($_POST['uname']);	
+			$usetype = test($_POST['usertype']);
+			if (empty($username) || empty($_POST['password']) || !isset($Religion))
 			{
 				echo "Fill up the form properly";				
 				?>
@@ -148,6 +149,7 @@
 			else
 			{						
 				echo "Username: " . $username;
+				echo "User Type" . $_POST['usertype'];
 				echo "<br><br>";					
 				if ($_POST['password'] == $_POST['cfpassword'] ) 
 				{
@@ -178,13 +180,13 @@
 
         if ($decode === NULL)  // checking if the file is empty or not
         {            
-            $users_list = array(array("firstname" => $firstname, "lastname" => $lastname, "Gender" => $_POST['gender'], "DOB" => $DOB, "Religion" => $Religion, "Permanent_Address" => $Permanent_Address, "Present_Address" => $Present_Address,"Phone" => $_POST['Phone'], "Email" => $Email,"pwl" => $_POST['pwl'],"Username" => $username,"Password" => $_POST['password'], "Confirm_Password" => $_POST['cfpassword']));
+            $users_list = array(array("firstname" => $firstname, "lastname" => $lastname, "Gender" => $_POST['gender'], "DOB" => $DOB, "Religion" => $Religion, "Permanent_Address" => $Permanent_Address, "Present_Address" => $Present_Address,"Phone" => $_POST['Phone'], "Email" => $Email,"pwl" => $_POST['pwl'],"Username" => $username,"userType" => $_POST['usertype'], "Password" => $_POST['password'], "Confirm_Password" => $_POST['cfpassword']));
             $users_list = json_encode($users_list);
             fwrite($handle, $users_list);
         }
         else
         {
-            $decode[] = array("firstname" => $firstname, "lastname" => $lastname, "Gender" => $_POST['gender'], "DOB" => $DOB, "Religion" => $Religion, "Permanent_Address" => $Permanent_Address, "Present_Address" => $Present_Address,"Phone" => $_POST['Phone'], "Email" => $Email,"pwl" => $_POST['pwl'],"Username" => $username,"Password" => $_POST['password'], "Confirm_Password" => $_POST['cfpassword']);
+            $decode[] = array("firstname" => $firstname, "lastname" => $lastname, "Gender" => $_POST['gender'], "DOB" => $DOB, "Religion" => $Religion, "Permanent_Address" => $Permanent_Address, "Present_Address" => $Present_Address,"Phone" => $_POST['Phone'], "Email" => $Email,"pwl" => $_POST['pwl'],"Username" => $username,"usertype" => $_POST['usertype'], "Password" => $_POST['password'], "Confirm_Password" => $_POST['cfpassword']);
             $users_list = json_encode($decode);
             fwrite($handle, $users_list);
         }

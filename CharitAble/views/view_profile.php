@@ -24,7 +24,8 @@
 			$Email = $decode[$i]->Email;
 			$Phone = $decode[$i]->Phone;
 			$pwl = $decode[$i]->pwl;
-			$username = $decode[$i]->Username;			
+			$username = $decode[$i]->Username;
+			$usertype = $decode[$i]->usertype;
 		}
 	}
 	$fc = fclose($handle);
@@ -53,6 +54,8 @@
 		echo "Email: " . $Email;
 		echo "<br><br>";				
 		echo "Personal Website Link: " . $pwl;
+		echo "<br><br>";
+		echo "User Type: <b>" . $usertype . "</b>";
 		echo "<br><br>";
 	?>
 	</fieldset>

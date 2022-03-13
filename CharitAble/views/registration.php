@@ -87,6 +87,16 @@
 
 			<br><br>
 
+			<label for="usertype">User Type</label><span style="color:red">*</span>
+			<select name="usertype" id="usertype" required>
+				<option value="Admin">Admin</option>
+				<option value="Employee">Employee</option>
+				<option value="Organisation">Organisation</option>
+				<option value="User">User</option>
+			</select>
+
+			<br><br>
+
 			<label for="password">Password</label><span style="color:red">*</span>
 			<input type="password" name="password" id="password" placeholder="Type your password" required>
 
