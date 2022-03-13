@@ -3,6 +3,7 @@
 ?>
 <!DOCTYPE html>
 <html>
+<title>Change Password</title>
 <?php include('templates/header.php')  ?>
 
 	<?php 

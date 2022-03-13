@@ -4,6 +4,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Registration Action</title>
+	<h1 style="color: darkcyan;" align="center">CharitAble</h1>
+	<p align="center"><b>Fundraising Website</b></p>
 </head>
 <body>
 	<h1 style="color: blueviolet;">Registration Action</h1>	
@@ -171,14 +173,14 @@
     //***************************************************
 
         $handle = fopen("../model/users_list.json", "r");
-        $fr = fread($handle, filesize("../model/users_list.json"));  // reading the file for the first time
+        $fr = fread($handle, filesize("../model/users_list.json")); 
         $decode = json_decode($fr);
         fclose($handle);
 
         $handle = fopen("../model/users_list.json", "w");     
 
 
-        if ($decode === NULL)  // checking if the file is empty or not
+        if ($decode === NULL)
         {            
             $users_list = array(array("firstname" => $firstname, "lastname" => $lastname, "Gender" => $_POST['gender'], "DOB" => $DOB, "Religion" => $Religion, "Permanent_Address" => $Permanent_Address, "Present_Address" => $Present_Address,"Phone" => $_POST['Phone'], "Email" => $Email,"pwl" => $_POST['pwl'],"Username" => $username,"userType" => $_POST['usertype'], "Password" => $_POST['password'], "Confirm_Password" => $_POST['cfpassword']));
             $users_list = json_encode($users_list);

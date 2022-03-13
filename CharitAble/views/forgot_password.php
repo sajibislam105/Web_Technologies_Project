@@ -3,14 +3,16 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Reset Password</title>
+	<title>Forgot Password</title>
+	<h1 style="color: darkcyan;" align="center">CharitAble</h1>
+	<p align="center"><b>Fundraising Website</b></p>
 </head>
 <body>
 	<h1>Reset Password</h1>
  	<form action="../views/forgot_password.php" method="POST" novalidate>
 		
 		<p>Please provide your credentials below</p>
-		<label for="username">Username</label>
+		<label for="username">Username &nbsp</label>
 		<input type="text" name="username" id="username" required autofocus>
 
 		<br><br>
@@ -20,7 +22,7 @@
 
 		<br><br>
 
-		<label for="Phone">Phone &nbsp &nbsp &nbsp</label>
+		<label for="Phone">Phone &nbsp &nbsp &nbsp &nbsp</label>
 		<input type="text" name="Phone" id="Phone" required>
 
 		<br><br>

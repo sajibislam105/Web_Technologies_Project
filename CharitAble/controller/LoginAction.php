@@ -32,7 +32,14 @@
 			{
 					echo "Fill up the form properly";
 					echo "<br>";
-					echo "Go back to Login Page and Try again with valid username or password";					
+					echo "Go back to Login Page and Try again with valid username or password";
+					?>
+					<br><br>
+					<a href="../views/Login.php">Login Page</a>
+					<br>
+					<?php
+					include('../views/templates/footer.php');
+
 			}
 			else
 			{			

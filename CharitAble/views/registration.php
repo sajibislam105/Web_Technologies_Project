@@ -4,9 +4,11 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Registration Form</title>
+	<h1 style="color: darkcyan;" align="center">CharitAble</h1>
+	<p align="center"><b>Fundraising Website</b></p>
 </head>
 <body>
-	<h1>Registration Form</h1>	
+	<h1 align="center">Registration Form</h1>	
 	<form action="../controller/RegistrationAction.php" method="POST" novalidate enctype="application/x-www-form-urlencoded">
 
 	<fieldset>
@@ -34,7 +36,7 @@
 
 			<br><br>	
 
-			<label for="Religion">Choose your Religion</label><span style="color:red">*</span>
+			<label for="Religion">Choose your Religion &nbsp&nbsp &nbsp</label><span style="color:red">*</span>
 			<select name="Religion" id="Religion" required>
 				<option value="None"></option>
 				<option value="Islam">Islam</option>
@@ -51,13 +53,13 @@
 		<legend>Group 2: Contact Information</legend>
 
 			<br>
-			<label for="Present_Address">Present Address</label><span style="color:red">*</span>
-			<textarea rows="3" cols="50" name="Present Address" id="Present_Address" placeholder="Enter your present address..." required></textarea>
+			<label for="Present_Address">Present Address</label><span style="color:red">*</span><br>
+			<textarea rows="2" cols="50" name="Present Address" id="Present_Address" placeholder="Enter your present address..." required></textarea>
 			
 			<br><br>
 
-			<label for="Permanent_Address">Permanent Address </label>
-			<textarea rows="3" cols="51"  name="Permanent Address" id="Permanent_Address" placeholder="Enter your permanent address..."></textarea>
+			<label for="Permanent_Address">Permanent Address </label><br>
+			<textarea rows="2" cols="50"  name="Permanent Address" id="Permanent_Address" placeholder="Enter your permanent address..."></textarea>
 			
 			<br><br>		
 
@@ -87,7 +89,7 @@
 
 			<br><br>
 
-			<label for="usertype">User Type</label><span style="color:red">*</span>
+			<label for="usertype">User Type &nbsp&nbsp</label><span style="color:red">*</span>
 			<select name="usertype" id="usertype" required>
 				<option value="Admin">Admin</option>
 				<option value="Employee">Employee</option>
@@ -98,17 +100,17 @@
 			<br><br>
 
 			<label for="password">Password</label><span style="color:red">*</span>
-			<input type="password" name="password" id="password" placeholder="Type your password" required>
+			<input type="password" name="password" id="password" size="25" placeholder="Type your password" required>
 
 			<br><br>
 
 			<label for="cfpassword">Confirm Password</label><span style="color:red">*</span>
-			<input type="password" name="cfpassword" id="cfpassword"  placeholder="Re-type your password" required>
+			<input type="password" name="cfpassword" id="cfpassword" size="17" placeholder="Re-type your password" required>
 
 	</fieldset>
 
 			<br>
-			<input type="submit" name="submit" value="Submit">
+			<input type="submit" name="Create" value="Create">
 			<a href="">
 
 			<br><br>

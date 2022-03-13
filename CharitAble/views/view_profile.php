@@ -1,8 +1,9 @@
 <?php 
-	session_start()
+	session_start();
 ?>
 <!DOCTYPE html>
 <html>
+	<title>View Profile</title>
 	<?php include('templates/header.php');
 	
 	$username = $_SESSION['username'];
@@ -61,7 +62,7 @@
 	</fieldset>
 
 	<br>   
-	<a href="../views/registration.php">Go Back</a>
+	<a href="../views/Dashboard.php">Go Back</a>
 </body>
 	<?php include('templates/footer.php')  ?>
 </html>

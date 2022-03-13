@@ -14,12 +14,14 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Login</title>
+	<h1 style="color: darkcyan;" align="center">CharitAble</h1>
+	<p align="center"><b>Fundraising Website</b></p>
 </head>
 <body>
 
 	<form action="../controller/LoginAction.php" method="POST" novalidate enctype="application/x-www-form-urlencoded">
 		
-			<h1 style="text-align: left; color: green;"><b>Login</b></h1>	
+			<h1 style="text-align: left;"><b>Login</b></h1>	
 			<br>
 			<label for="username">Username</label><span style="color:red">*</span>
 			<input type="text" name="username" id="username" size="25" maxlength="5" required autofocus>			
