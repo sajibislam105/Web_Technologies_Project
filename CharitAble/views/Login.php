@@ -21,8 +21,7 @@
 
 	<form action="../controller/LoginAction.php" method="POST" novalidate enctype="application/x-www-form-urlencoded">
 		
-			<h1 style="text-align: left;"><b>Login</b></h1>	
-			<br>
+			<h2 style="text-align: left;"><b>Login</b></h2>
 			<label for="username">Username</label><span style="color:red">*</span>
 			<input type="text" name="username" id="username" size="25" maxlength="5" required autofocus>			
 			<br><br>

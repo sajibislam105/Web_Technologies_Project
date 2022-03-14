@@ -12,7 +12,7 @@
 	<form action="../controller/RegistrationAction.php" method="POST" novalidate enctype="application/x-www-form-urlencoded">
 
 	<fieldset>
-		<legend>Group 1: Basic Information</legend>
+		<legend style="text-align: center;">Group 1: Basic Information</legend>
 
 		<br>
 			<label for="fname">First Name</label><span style="color:red">*</span>
@@ -50,7 +50,7 @@
 			<br>
 
 	<fieldset>
-		<legend>Group 2: Contact Information</legend>
+		<legend style="text-align: center;">Group 2: Contact Information</legend>
 
 			<br>
 			<label for="Present_Address">Present Address</label><span style="color:red">*</span><br>
@@ -81,7 +81,7 @@
 			<br>
 
 	<fieldset>
-			<legend><b>Group 3: Credentials</b></legend>
+			<legend style="text-align: center;"><b>Group 3: Credentials</b></legend>
 
 			<br>
 			<label for="uname">Username</label><span style="color:red">*</span>

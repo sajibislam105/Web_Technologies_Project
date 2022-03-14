@@ -198,5 +198,6 @@
 	</fieldset>	
 	<br>
 	<a href="../views/registration.php">Go Back</a>
+	<?php  include('..views/templates/footer.php');?>
 </body>
 </html>

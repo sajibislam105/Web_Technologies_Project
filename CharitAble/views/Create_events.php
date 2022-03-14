@@ -1,14 +1,33 @@
 <?php 
-	session_start();
-?>
+
+	session_start();	
+	if (!isset($_SESSION['username']) )
+	{
+		?>
+		<title>Access Denied</title>
+		<h1 style="color: darkcyan;" align="center">CharitAble</h1>
+		<p align="center"><b>Fundraising Website</b></p>
+		<br>
+		<h1 style="color: red; text-align: center;">Please Login first to access this page</h1>
+		<p style="text-align: center;">You do not the permission to access this page</p>
+		<br>
+		<a href="../views/login.php"><p style="text-align: center;">Login Page</p></a>
+
+		<?php
+		include('templates/footer.php');
+
+	}
+	else
+	{
+		?>
 <!DOCTYPE html>
 <html>
 	<?php include('templates/header.php')  ?>
 	<title>Create Event</title>
-	
-	<br><br>
-	<h1 align="center">Events Form</h1>	
-	<form action="../controller/ManageEventsAction.php" method="POST" novalidate enctype="application/x-www-form-urlencoded">
+
+	<h1 align="center">Create Event</h1>
+	<br>	
+	<form action="../controller/ManageEventsCreateAction.php" method="POST" novalidate enctype="application/x-www-form-urlencoded">
 
 	<fieldset>		
 		<br>
@@ -49,5 +68,5 @@
 	</form>
 
 
-<?php include('templates/footer.php') ?>
+<?php include('templates/footer.php');} ?>
 </html>
