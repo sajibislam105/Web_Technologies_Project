@@ -43,15 +43,12 @@
 		<a href="../views/Manage_users.php">Manage Users</a>
 		<br><br>
 		<label>4.</label>	
-		<a href="">Verify Organization</a>		
-		<br><br>
+		<a href="../views/verify_organization.php">Verify Organization</a>		
+		<br><br>		
 		<label>5.</label>
-		<a href="">Review Finance</a>	
-		<br><br>
-		<label>6.</label>
 		<a href="../views/Member_record.php">Member Records</a>	
 		<br><br>
-		<label>7.</label>
+		<label>6.</label>
 		<a href="../views/view_feedback.php">View Feedbacks</a>	
 		<br><br>
 		

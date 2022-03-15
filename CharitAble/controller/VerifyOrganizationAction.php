@@ -25,7 +25,7 @@
 <html>
 <?php include('../views/templates/header.php')  ?>
 
-<h1 style="color: blueviolet;">Manage Events Action</h1>	
+<h1 style="color: blueviolet;">Verify Organization Action</h1>	
 	
 	<?php
 
@@ -37,10 +37,9 @@
 			return $data;
 		}		
 	?>
-	<fieldset>
-		<legend>Group 1: Basic Information</legend>		
+		
 	<?php 
-
+		
 		if ($_SERVER['REQUEST_METHOD'] === "POST")
 		{			
 			$ename = test($_POST['ename']);		

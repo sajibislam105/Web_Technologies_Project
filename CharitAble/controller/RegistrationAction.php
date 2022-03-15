@@ -6,7 +6,7 @@
 	<title>Registration Action</title>
 	<h1 style="color: darkcyan;" align="center">CharitAble</h1>
 	<p align="center"><b>You think, You care, You give.</b></p>
-	<p align="center"><b>Fundraising Website</b></p>
+	<p align="center"><b>Charity Website</b></p>
 </head>
 <body>
 	<h1 style="color: blueviolet;">Registration Action</h1>	
