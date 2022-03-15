@@ -26,12 +26,47 @@
 			<?php include('templates/header.php'); ?>
 
 			<h2 align="center">Feedbacks</h2>
-			<fieldset>
-				
-			</fieldset>
+			
+	<?php 
+		
+		$handle = fopen("../model/feedback.json", "r");
+		$fr = fread($handle, filesize("../model/feedback.json"));
+		$arr1 = json_decode($fr);				
+
+		if ($arr1 === NULL) {
+			echo "<p>No Feedback given.</p>";
+		}
+		else
+		{
+			echo "<table class='center' border='1'>";
+			echo "<thead>";
+			echo "<tr>";			
+			echo "<th><b>Username</b></th>";
+			echo "<th><b>Subject</b></th>";
+			echo "<th><b>Feedback</b></th>";
+			echo "</tr>";
+			echo "</thead>";
+			echo "<tbody>";
+			for ($i = 0; $i < count($arr1); $i++) 
+			{
+				echo "<tr>";
+				echo "<td>" . $arr1[$i]->Username . "</td>";
+				echo "<td>" . $arr1[$i]->Subject . "</td>";
+				echo "<td>" . $arr1[$i]->feedback . "</td>";				
+				echo "</tr>";
+			}
+			echo "</tbody>";
+			echo "</table>";
+
+		}
+			$fc = fclose($handle);
+	}
+	?>			
+			
 			<br>
 			<a href="../views/Dashboard.php">Back</a>
-			<?php include('../views/templates/footer.php'); 
-	}
-															?>
+		
+	 
+		
+	<?php	include('../views/templates/footer.php'); ?>
 	</html>

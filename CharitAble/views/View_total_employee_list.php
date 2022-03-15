@@ -22,8 +22,8 @@
 		?>
 		<!DOCTYPE html>
 		<html>
-			<title>Members Record</title>			
-			<?php include('templates/header.php'); ?>
+			<title>Employee List</title>			
+			<?php include('../templates/header.php'); ?>
 			<h2 align="center">Members Record</h2>
 			<br>
 			
@@ -41,6 +41,9 @@
 				?>
 				<fieldset>
 				<?php
+				if ($decode[$i]->usertype == "Employee" ) 
+				{
+									
 					echo "Serial: " . $serial = $i + 1;
 					echo "<br><br>";			
 					echo "Name: ".  $decode[$i]->firstname ." ". $decode[$i]->lastname ."<br><br>";			
@@ -54,6 +57,7 @@
 					echo "Personal Website: ".$decode[$i]->pwl . "<br><br>";
 					echo "Username: ".$decode[$i]->Username . "<br><br>";
 					echo "User Type: ".$decode[$i]->usertype . "<br>\n";
+				}
 				?>
 				</fieldset>
 				<br><br>

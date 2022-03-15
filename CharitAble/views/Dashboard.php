@@ -26,17 +26,17 @@
 	<?php include('templates/header.php')  ?>
 
 	<title>Dashboard</title>
-	<h1 align="center">Dashboard</h1>
+	<h2 align="center">Dashboard</h2>
 
 	<fieldset>
-		<legend style="text-align: center;">Operations</legend>
-			
+		<legend style="text-align: center;">Operations</legend>			
+		
 		<br><br>
 		<label>1.</label>
 		<a href="../views/Manage_Events.php">Manage Events</a>
 		<br><br>
 		<label>2.</label>	
-		<a href="">Manage Employees</a>		
+		<a href="../views/Human_resources.php">Human Resources</a>
 		<br><br>
 		<label>3.</label>
 		<a href="">Manage Users</a>
@@ -53,6 +53,7 @@
 		<label>7.</label>
 		<a href="../views/view_feedback.php">View Feedbacks</a>	
 		<br><br>
+		
 	</fieldset>
 
 	<?php include('templates/footer.php') ?>
