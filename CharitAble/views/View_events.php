@@ -6,7 +6,8 @@
 		?>
 		<title>Access Denied</title>
 		<h1 style="color: darkcyan;" align="center">CharitAble</h1>
-		<p align="center"><b>Fundraising Website</b></p>
+		<p align="center"><b>You think, You care, You give.</b></p>
+		<p align="center"><b>Charity Website</b></p>
 		<br>
 		<h1 style="color: red; text-align: center;">Please Login first to access this page</h1>
 		<p style="text-align: center;">You do not the permission to access this page</p>
@@ -51,8 +52,8 @@
 				echo "Event ID: <b>" . $decode[$i]->event_id . "</b><br>";
 				echo "Event Name: " . $decode[$i]->ename . "<br>";			
 				echo "Event Type: " . $decode[$i]->type . "<br>";
-				echo "Date of Event: " . $decode[$i]->DOE . "<br>";
-				echo "Short Description: " . $decode[$i]->Short_description . "<br>";
+				echo "Date of Event: " . $decode[$i]->DOE . "<br><br>";
+				echo "Short Description: " . $decode[$i]->Short_description . "<br><br>";
 				echo "Details: " . $decode[$i]->Details . "<br><br>";
 			}
 

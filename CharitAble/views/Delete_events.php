@@ -6,7 +6,8 @@
 		?>
 		<title>Access Denied</title>
 		<h1 style="color: darkcyan;" align="center">CharitAble</h1>
-		<p align="center"><b>Fundraising Website</b></p>
+		<p align="center"><b>You think, You care, You give.</b></p>
+		<p align="center"><b>Charity Website</b></p>
 		<br>
 		<h1 style="color: red; text-align: center;">Please Login first to access this page</h1>
 		<p style="text-align: center;">You do not the permission to access this page</p>
@@ -34,7 +35,7 @@
 						<br>
 						<input type="text" name="ename" id="ename" size="50" required autofocus>
 						<br><br>
-						<label for="ename">Event ID:</label>
+						<label for="e_id">Event ID:</label>
 						<br>
 						<input type="text" name="e_id" id="e_id"  required> 
 						<br><br>

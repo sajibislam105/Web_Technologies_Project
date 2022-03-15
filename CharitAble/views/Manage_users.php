@@ -12,31 +12,25 @@
 		<h1 style="color: red; text-align: center;">Please Login first to access this page</h1>
 		<p style="text-align: center;">You do not the permission to access this page</p>
 		<br>
-		<a href="../views/login.php"><p style="text-align: center;">Login Page</p></a>
+		<a href="/views/login.php"><p style="text-align: center;">Login Page</p></a>
 
 		<?php
 		include('templates/footer.php');
-
 	}
 	else
 	{
 		?>
 <!DOCTYPE html>
 <html>
-<title>Manage Events</title>
-<?php include("templates/header.php") ?>
-<h2 align="center">Manage Events</h2>
+<title>Manage Users</title>
+<?php include("templates/header.php"); ?>
+<h2 align="center">Manage Users</h2>
 
 	<fieldset>
-		<legend style="text-align: center;">CRUD Operation</legend>
 			<br><br>
-			<a href="../views/View_events.php">View Event</a>
+			<a href="registration.php">Add User</a>			
 			<br><br>
-			<a href="../views/Create_events.php">Create Event</a>		
-			<br><br>
-			<a href="../views/Update_events.php">Update Event</a>
-			<br><br>
-			<a href="../views/Delete_events.php">Delete Event</a>
+			<a href="Ban_User.php">Ban User</a>
 			<br><br>		
 	</fieldset>
 

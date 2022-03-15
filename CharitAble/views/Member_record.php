@@ -6,7 +6,8 @@
 		?>
 		<title>Access Denied</title>
 		<h1 style="color: darkcyan;" align="center">CharitAble</h1>
-		<p align="center"><b>Fundraising Website</b></p>
+		<p align="center"><b>You think, You care, You give.</b></p>
+		<p align="center"><b>Charity Website</b></p>
 		<br>
 		<h1 style="color: red; text-align: center;">Please Login first to access this page</h1>
 		<p style="text-align: center;">You do not the permission to access this page</p>
@@ -24,7 +25,7 @@
 		<html>
 			<title>Members Record</title>			
 			<?php include('templates/header.php'); ?>
-			<h2 align="center">Members Record</h2>
+			<h2 align="center">All Members Record</h2>
 			<br>
 			
 			<?php 
@@ -35,9 +36,10 @@
 			$fc = fclose($handle);		
 			
 
-
+			$countemployee;
 			for ($i=0; $i < count($decode) ; $i++) 
-			{ 
+			{ 	
+				$count_members = $i + 1;
 				?>
 				<fieldset>
 				<?php
@@ -60,12 +62,15 @@
 				<?php
 			}
 
+			echo "Current total registered people in the website: " . $count_members;
+
 			 ?>
-				
+			
+			<br>
 			</fieldset>
 			<br>
 			<a href="../views/Dashboard.php">Back</a>
 			<?php include('../views/templates/footer.php'); 
 	}
-															?>
+?>
 	</html>

@@ -23,9 +23,9 @@
 		?>
 <!DOCTYPE html>
 <html>
-<?php include('../views/templates/header.php')  ?>
+<?php include('../views/templates/header.php');  ?>
 
-<h1 style="color: blueviolet;">Manage Events Action</h1>	
+<h1 style="color: blueviolet;">Fire Employees Action</h1>	
 	
 	<?php 
 
@@ -39,29 +39,27 @@
 
 		if ($_SERVER['REQUEST_METHOD'] === "POST")
 		{			
-			$ename = test($_POST['ename']);		
-			$e_id = test($_POST['e_id']);
-			$type = test($_POST['type']);
+			$employee_name = test($_POST['employee_name']);		
 			
 				
-			if (empty($ename) || $ename == NULL || empty($e_id) || $e_id == NULL || !isset($type)) 
+			if (empty($employee_name) || $employee_name == NULL ) 
 			{
 				echo "<br>Fill up the form properly";
 				echo "<br>";
 				?>
-				<p style="color:red;"><b>No Event Found</b></p>
+				<p style="color:red;"><b>No Employee Found</b></p>
 				<?php								
 			}				
 			else
 			{	
-				$handle = fopen("../model/events.json", "r");
-				$fr = fread($handle, filesize("../model/events.json"));
+				$handle = fopen("../model/users_list.json", "r");
+				$fr = fread($handle, filesize("../model/users_list.json"));
 				$arr1 = json_decode($fr);
 
 				$flag = false;
 				for ($i=0; $i < count($arr1) ; $i++) 
 				{ 
-					if(($ename == $arr1[$i]->ename) && ($e_id == $arr1[$i]->event_id) &&($type == $arr1[$i]->type))
+					if(($employee_name == $arr1[$i]->Username) && ($arr1[$i]->usertype == "Employee"))
 					{
 							$flag = true;
 							
@@ -73,30 +71,30 @@
 					}
 				}
 
-				if ($flag === true) 
+				if ($flag == true) 
 				{	
 					$arr2 = array();
 					for ($i=0; $i < count($arr1); $i++)
 					{ 
-						if ($e_id != $arr1[$i]->event_id)
+						if ($employee_name != $arr1[$i]->Username)
 						{
 							array_push($arr2, $arr1[$i]);
 						}
 					}
 					$fc =fclose($handle);
 
-					$handle = fopen("../model/events.json", "w");					
+					$handle = fopen("../model/users_list.json", "w");					
 
 					$data = json_encode($arr2);
 					$fw = fwrite($handle, $data);
 					$fc = fclose($handle);
-					echo '<h4>Event Name:  ' . $ename . ' Deleted</h4>';
-					header('Location: ../views/View_events.php');
+					//echo '<h4>Employee Username:  ' . $employee_name . ' Deleted</h4>';
+					header('Location: ../views/View_total_employee_list.php');
 				}
 				else
 				{
-					echo '<h4 style="color: red;" >' . $ename . ' not found </h4>';
-					echo "<br>Please insert the correct information";
+					echo '<h4 style="color: red;" >' . $employee_name . ' not found </h4>';
+					echo "<br>Please insert the correct username";
 				}
 			}
 		}

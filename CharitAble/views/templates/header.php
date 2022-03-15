@@ -3,7 +3,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<h1 style="color: darkcyan;" align="center">CharitAble</h1>
-	<p align="center"><b>Fundraising Website</b></p>
+	<p align="center"><b>You think, You care, You give.</b></p>
+	<p align="center"><b>Charity Website</b></p>
 
 </head>
 <body>

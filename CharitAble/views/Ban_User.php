@@ -21,30 +21,24 @@
 	else
 	{
 		?>
-<!DOCTYPE html>
+		<!DOCTYPE html>
 <html>
-<title>Manage Events</title>
-<?php include("templates/header.php") ?>
-<h2 align="center">Manage Events</h2>
-
-	<fieldset>
-		<legend style="text-align: center;">CRUD Operation</legend>
-			<br><br>
-			<a href="../views/View_events.php">View Event</a>
-			<br><br>
-			<a href="../views/Create_events.php">Create Event</a>		
-			<br><br>
-			<a href="../views/Update_events.php">Update Event</a>
-			<br><br>
-			<a href="../views/Delete_events.php">Delete Event</a>
-			<br><br>		
-	</fieldset>
-
+	
+	<?php include('templates/header.php'); ?>
+	<title>Ban Users</title>
+	<h1 align="center">Ban Users</h1>
 	<br>
-	<a href="../views/Dashboard.php"><b style="color: blue;">Back</b></a>
-	<br><br>
-
-	<?php include("templates/footer.php"); 
-} 
-	?>
-</html>
+	<form action="../controller/ManageUsersBanAction.php" method="POST"  novalidate>
+	<fieldset>		
+					<br>
+						<label for="user's_username">Username:</label>
+						<br>
+						<input type="text" name="user's_username" id="user's_username" size="50" required autofocus>
+						<br><br>						
+						<input type="submit" name="Ban_User" value="Ban User">
+	</fieldset>
+	</form>	
+	<br>
+	<a href="../views/Manage_users.php">Previous page</a> 
+	<?php include('templates/footer.php'); }  ?>
+	</html>

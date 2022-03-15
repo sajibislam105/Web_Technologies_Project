@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Registration Action</title>
 	<h1 style="color: darkcyan;" align="center">CharitAble</h1>
+	<p align="center"><b>You think, You care, You give.</b></p>
 	<p align="center"><b>Fundraising Website</b></p>
 </head>
 <body>
@@ -23,7 +24,7 @@
 	<fieldset>
 		<legend>Group 1: Basic Information</legend>		
 	<?php 
-
+		$checker = false;
 		if ($_SERVER['REQUEST_METHOD'] === "POST")
 		{			
 			$firstname = test($_POST['firstname']);
@@ -35,6 +36,7 @@
 			{
 				echo "Fill up the form properly";
 				echo "<br><br>";
+				$checker = true;
 				?>
 				<p style="color:red;"><b>Registration Failed</b></p>
 				<?php								
@@ -50,7 +52,7 @@
 				echo "Date of Birth: " . $DOB;
 				echo "<br><br>";				
 				echo "Religion: " . $Religion;
-				//$checker =1;
+				$checker =1;
 			}			
 		}	
 		else
@@ -74,6 +76,7 @@
 			{	
 				echo "Fill up the form properly";
 				echo "<br><br>";
+				$checker = true;
 				?>
 				<p style="color:red;"><b>Registration Failed</b></p>
 				<?php
@@ -142,7 +145,8 @@
 			$usetype = test($_POST['usertype']);
 			if (empty($username) || empty($_POST['password']) || !isset($Religion))
 			{
-				echo "Fill up the form properly";				
+				echo "Fill up the form properly";
+				$checker = true;
 				?>
 				<p style="color:red;"><b>Registration Failed</b></p>
 				<?php
@@ -151,13 +155,14 @@
 			else
 			{						
 				echo "Username: " . $username;
+				echo "<br><br>";
 				echo "User Type" . $_POST['usertype'];
 				echo "<br><br>";					
 				if ($_POST['password'] == $_POST['cfpassword'] ) 
 				{
 					echo "Password Matched";
 					echo "<br>";
-					echo "Registration Successful.";
+					
 				}
 				else
 				{
@@ -171,33 +176,53 @@
 		}			
 
     //***************************************************
+		if ($_SERVER['REQUEST_METHOD'] === "POST")
+		{
 
-        $handle = fopen("../model/users_list.json", "r");
-        $fr = fread($handle, filesize("../model/users_list.json")); 
-        $decode = json_decode($fr);
-        fclose($handle);
+			if ($checker == false)
+			{
+			
+			
 
-        $handle = fopen("../model/users_list.json", "w");     
+		        $handle = fopen("../model/users_list.json", "r");
+		        $fr = fread($handle, filesize("../model/users_list.json")); 
+		        $decode = json_decode($fr);
+		        fclose($handle);
+
+		        $handle = fopen("../model/users_list.json", "w");     
 
 
-        if ($decode === NULL)
-        {            
-            $users_list = array(array("firstname" => $firstname, "lastname" => $lastname, "Gender" => $_POST['gender'], "DOB" => $DOB, "Religion" => $Religion, "Permanent_Address" => $Permanent_Address, "Present_Address" => $Present_Address,"Phone" => $_POST['Phone'], "Email" => $Email,"pwl" => $_POST['pwl'],"Username" => $username,"userType" => $_POST['usertype'], "Password" => $_POST['password'], "Confirm_Password" => $_POST['cfpassword']));
-            $users_list = json_encode($users_list);
-            fwrite($handle, $users_list);
-        }
-        else
-        {
-            $decode[] = array("firstname" => $firstname, "lastname" => $lastname, "Gender" => $_POST['gender'], "DOB" => $DOB, "Religion" => $Religion, "Permanent_Address" => $Permanent_Address, "Present_Address" => $Present_Address,"Phone" => $_POST['Phone'], "Email" => $Email,"pwl" => $_POST['pwl'],"Username" => $username,"usertype" => $_POST['usertype'], "Password" => $_POST['password'], "Confirm_Password" => $_POST['cfpassword']);
-            $users_list = json_encode($decode);
-            fwrite($handle, $users_list);
-        }
-        fclose($handle);
+		        if ($decode === NULL)
+		        {            
+		            $users_list = array(array("firstname" => $firstname, "lastname" => $lastname, "Gender" => $_POST['gender'], "DOB" => $DOB, "Religion" => $Religion, "Permanent_Address" => $Permanent_Address, "Present_Address" => $Present_Address,"Phone" => $_POST['Phone'], "Email" => $Email,"pwl" => $_POST['pwl'],"Username" => $username,"userType" => $_POST['usertype'], "Password" => $_POST['password'], "Confirm_Password" => $_POST['cfpassword']));
+		            $users_list = json_encode($users_list);
+		            fwrite($handle, $users_list);
+		        }
+		        else
+		        {
+		            $decode[] = array("firstname" => $firstname, "lastname" => $lastname, "Gender" => $_POST['gender'], "DOB" => $DOB, "Religion" => $Religion, "Permanent_Address" => $Permanent_Address, "Present_Address" => $Present_Address,"Phone" => $_POST['Phone'], "Email" => $Email,"pwl" => $_POST['pwl'],"Username" => $username,"usertype" => $_POST['usertype'], "Password" => $_POST['password'], "Confirm_Password" => $_POST['cfpassword']);
+		            $users_list = json_encode($decode);
+		            fwrite($handle, $users_list);
+		        }
+		        fclose($handle);
+		        echo "Registration Successful";
+		    }
+		    else
+		    {	
+		    	echo "<br>";
+		    	echo "Unsuccessful Registration";
+		    }
+		}
+		else
+		{
+			echo " Can not process GET REQUEST METHOD";
+		}
+
         
 	?>
 	</fieldset>	
 	<br>
 	<a href="../views/registration.php">Go Back</a>
-	<?php  include('..views/templates/footer.php');?>
+	<?php  include('../views/templates/footer.php');?>
 </body>
 </html>
