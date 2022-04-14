@@ -31,6 +31,7 @@
 			$lastname = test($_POST['lastname']);
 			$DOB = $_POST['DOB'];
 			$Religion = test($_POST['Religion']);
+			$Gender = test($_POST['gender']);
 				
 			if (empty($lastname) || empty($firstname) || !isset($_POST['gender']) || !isset($_POST['DOB']) || !isset($Religion)) 
 			{
@@ -52,7 +53,7 @@
 				echo "Date of Birth: " . $DOB;
 				echo "<br><br>";				
 				echo "Religion: " . $Religion;
-				$checker =1;
+				//$checker =1;
 			}			
 		}	
 		else
@@ -71,6 +72,8 @@
 			$Present_Address = test($_POST['Present_Address']);
 			$Permanent_Address = test($_POST['Permanent_Address']);
 			$Email = test($_POST['Email']);
+			$Phone = test($_POST['Phone']);
+			$pwl = test($_POST['pwl']);
 
 			if (empty($Present_Address) || empty($Email)) 
 			{	
@@ -103,7 +106,7 @@
 				}
 				else
 				{
-					$Phone = test($_POST['Phone']);
+					
 					echo "Phone: " . $Phone;
 					echo "<br><br>";			
 				}
@@ -123,7 +126,7 @@
 				}
 				else
 				{
-				$pwl = test($_POST['pwl']);
+				
 				echo "Personal Website Link: " . $pwl;			
 				}
 			}
@@ -142,7 +145,10 @@
 		if ($_SERVER['REQUEST_METHOD'] === "POST")
 		{	
 			$username = test($_POST['uname']);	
-			$usetype = test($_POST['usertype']);
+			$usertype = test($_POST['usertype']);
+			$Password = $_POST['password'];
+			$Confirm_Password = $_POST['cfpassword'];
+
 			if (empty($username) || empty($_POST['password']) || !isset($Religion))
 			{
 				echo "Fill up the form properly";
@@ -181,37 +187,38 @@
 
 			if ($checker == false)
 			{
-			
-			
+				$servername = "localhost";
+				$sqlusername = "root";
+				$password = "";
+				$dbname = "charitable";
 
-		        $handle = fopen("../model/users_list.json", "r");
-		        $fr = fread($handle, filesize("../model/users_list.json")); 
-		        $decode = json_decode($fr);
-		        fclose($handle);
+				
+				$conn = new mysqli($servername, $sqlusername, $password, $dbname);
 
-		        $handle = fopen("../model/users_list.json", "w");     
+				
+				if ($conn->connect_error)
+				{
+				  die("Connection failed: " . $conn->connect_error);
+				 	echo "<br>";
+		    		echo "Unsuccessful Registration";
+				}
+				else
+				{
+			        $sql = "INSERT INTO users_list VALUES ('$firstname', '$lastname','$Gender', '$DOB', '$Religion', '$Permanent_Address', '$Present_Address', '$Phone', '$Email', '$pwl', '$username', '$usertype', '$Password', '$Confirm_Password')";
 
+					if ($conn->query($sql) === TRUE)
+					{
+  					echo "<br>";
+			        echo "Registration Successful";
+					}
+					else
+					{
+  						echo "Error: " . $sql . "<br>" . $conn->error;
+					}
 
-		        if ($decode === NULL)
-		        {            
-		            $users_list = array(array("firstname" => $firstname, "lastname" => $lastname, "Gender" => $_POST['gender'], "DOB" => $DOB, "Religion" => $Religion, "Permanent_Address" => $Permanent_Address, "Present_Address" => $Present_Address,"Phone" => $_POST['Phone'], "Email" => $Email,"pwl" => $_POST['pwl'],"Username" => $username,"userType" => $_POST['usertype'], "Password" => $_POST['password'], "Confirm_Password" => $_POST['cfpassword']));
-		            $users_list = json_encode($users_list);
-		            fwrite($handle, $users_list);
-		        }
-		        else
-		        {
-		            $decode[] = array("firstname" => $firstname, "lastname" => $lastname, "Gender" => $_POST['gender'], "DOB" => $DOB, "Religion" => $Religion, "Permanent_Address" => $Permanent_Address, "Present_Address" => $Present_Address,"Phone" => $_POST['Phone'], "Email" => $Email,"pwl" => $_POST['pwl'],"Username" => $username,"usertype" => $_POST['usertype'], "Password" => $_POST['password'], "Confirm_Password" => $_POST['cfpassword']);
-		            $users_list = json_encode($decode);
-		            fwrite($handle, $users_list);
-		        }
-		        fclose($handle);
-		        echo "Registration Successful";
-		    }
-		    else
-		    {	
-		    	echo "<br>";
-		    	echo "Unsuccessful Registration";
-		    }
+					$conn->close();
+			    }
+			}
 		}
 		else
 		{
@@ -223,6 +230,7 @@
 	</fieldset>	
 	<br>
 	<a href="../views/registration.php">Go Back</a>
+
 	<?php  include('../views/templates/footer.php');?>
-</body>
+
 </html>

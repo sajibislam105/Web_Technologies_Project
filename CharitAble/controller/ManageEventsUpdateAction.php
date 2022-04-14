@@ -1,5 +1,4 @@
 <?php 
-
 	session_start();	
 	if (!isset($_SESSION['username']) )
 	{
@@ -73,50 +72,43 @@
 
 	if ($_SERVER['REQUEST_METHOD'] === "POST")
 	{			
-		$ename = test($_POST['ename']);		
-		$DOE = test($_POST['DOE']);
-		$Sdescription = test($_POST['Short_description']);
-		$Details = test($_POST['Details']);
-		if (empty($ename) || !isset($_POST['DOE']) || !isset($_POST['type']) || !isset($_POST['DOE']) || empty($Sdescription) || empty($Details))
-		{
-			echo "Fill up the form properly";			
-			?>
-			<br>
-			<p style="color:red;"><b>Not Updated</b></p>
-			<?php				
-		}
-		else
-		{	
-	        $handle = fopen("../model/events.json", "r");
-	        $fr = fread($handle, filesize("../model/events.json"));
-	        $arr1 = json_decode($fr);
-	        $array_count = count($arr1);
-	        fclose($handle);
-
-	        $handle = fopen("../model/events.json", "w");     
-
-	        for ($i=0; $i < count($arr1); $i++) 
-       		{
-	        	if ($ename == $arr1[$i]->ename) 
-	        	{
-	        		$arr1[$i]->Ename = $ename;
-	        		$arr1[$i]->type = $_POST['type'];
-	        		$arr1[$i]->DOE = $DOE;
-	        		$arr1[$i]->Short_description = $Sdescription;
-	        		$arr1[$i]->Details = $Details;
-	        	}		        	
-       		}
-       		$data = json_encode($arr1);
-        	$fw = fwrite($handle, $data);
-        	$fc = fclose($handle);		           
-		}
+	    	$servername = "localhost";
+			$sqlusername = "root";
+			$password = "";
+			$dbname = "charitable";
+			
+			$conn = new mysqli($servername, $sqlusername, $password, $dbname);
+			
+			if ($conn->connect_error)
+			{
+			  die("Connection failed: " . $conn->connect_error);
+			 	echo "<br>";
+	    		echo "Event Update failed";
+			}
+			else
+			{	
+				
+		        $sql = "UPDATE events SET ename='$ename', type='$type', DOE='$DOE', Short_description='$Sdescription', Details='$Details' WHERE ename='$ename'";
+		      
+				if ($conn->query($sql) === TRUE)
+				{
+		        	echo "Event Updated Successfully";
+		        	header("Location: ../views/Manage_events.php");
+				}
+				else
+				{
+						echo "Error: " . $sql . "<br>" . $conn->error;
+				}
+				$conn->close();
+			}		          
+	}		
+	else
+	{
+		echo "Can not process GET REQUEST";
 	}		        
 ?>
-
     <br><br>
     <a href="../views/Manage_events.php">Previous page</a> 
 
-<?php include('../views./templates/footer.php'); } ?>
-
-
+	<?php include('../views./templates/footer.php'); } ?>
 </html>

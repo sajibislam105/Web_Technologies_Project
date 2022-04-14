@@ -86,7 +86,7 @@
 
 			<br>
 			<label for="uname">Username</label><span style="color:red">*</span>
-			<input type="text" name="uname" id="uname" size="25"  placeholder="Maximum 5 character can be used" maxlength="5" required>
+			<input type="text" name="uname" id="uname" size="25" required>
 
 			<br><br>
 
@@ -119,6 +119,8 @@
 
 	</form>
 
+</body>
 
 <?php include('templates/footer.php')  ?>
+
 </html>

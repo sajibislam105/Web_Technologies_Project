@@ -1,5 +1,4 @@
 <?php 
-
 	session_start();	
 	if (!isset($_SESSION['username']) )
 	{
@@ -30,38 +29,44 @@
 
 		<?php
 			
-			$handle = fopen("../model/events.json", "r");
-			$fr = fread($handle, filesize("../model/events.json"));
-			$decode = json_decode($fr);
+			$servername = "localhost";
+			$username = "root";
+			$password = "";
+			$dbname = "charitable";
 			
-			if ($decode == NULL)
+			$conn = new mysqli($servername, $username, $password, $dbname);
+
+			if ($conn->connect_error)
 			{
-				echo "No events found";
+			  die("Connection failed: " . $conn->connect_error);
 			}
 			else
-			{		
-		?>
-			<fieldset>
+			{
+
+				$sql = "SELECT * FROM events";
+				$result = $conn->query($sql);
+
+				if ($result->num_rows > 0) 
+				{
+				  // output data of each row
+				?>
+				<fieldset>
 				<legend><b>Events Information</b></legend>		
 						
 				<br>
-		<?php
-
-			for ($i=0; $i < count($decode) ; $i++)
-			{ 
-				echo "Event ID: <b>" . $decode[$i]->event_id . "</b><br>";
-				echo "Event Name: " . $decode[$i]->ename . "<br>";			
-				echo "Event Type: " . $decode[$i]->type . "<br>";
-				echo "Date of Event: " . $decode[$i]->DOE . "<br><br>";
-				echo "Short Description: " . $decode[$i]->Short_description . "<br><br>";
-				echo "Details: " . $decode[$i]->Details . "<br><br>";
+				<?php
+				  while($row = $result->fetch_assoc())
+				  {
+				    echo "<b>Event id: " . $row["event_id"]. "</b><br><br>" . "Event Name: " . $row["ename"]. "<br><br>Event Type: " . $row["type"]. "<br><br>Date of Event: " . $row["DOE"]. "<br><br>Short Description: " . $row["Short_description"]. "<br><br>Details: " . $row["Details"] . "<br><br>";
+				  }
+				}
+				else 
+				{
+				  echo "No event found";
+				}
 			}
-
-		}
-
-			$fc = fclose($handle)
-
-		?>
+			$conn->close();				
+		?>		
 			</fieldset>
 
 			<br>   

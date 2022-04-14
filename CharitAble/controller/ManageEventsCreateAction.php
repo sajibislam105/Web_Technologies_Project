@@ -42,11 +42,13 @@
 	<?php 
 
 		if ($_SERVER['REQUEST_METHOD'] === "POST")
-		{			
+		{		
+				
 			$ename = test($_POST['ename']);		
 			$DOE = test($_POST['DOE']);
 			$Sdescription = test($_POST['Short_description']);
 			$Details = test($_POST['Details']);
+			$type = test($_POST['type']);
 				
 			if ( (empty($ename) || $ename == NULL ) || ( !isset($_POST['DOE']) || $DOE == NULL ) ||( !isset($_POST['type']) || $_POST['type'] == NULL )|| ( !isset($_POST['DOE']) || $DOE == NULL )|| ( empty($Sdescription) || $Sdescription == NULL )|| ( empty($Details) || $Details == NULL )) 
 			{
@@ -58,33 +60,38 @@
 			}				
 			else
 			{	
-				$handle = fopen("../model/events.json", "r");
-		        $fr = fread($handle, filesize("../model/events.json"));
-		        $decode = json_decode($fr);
-		        $array_count = count($decode);
-		        fclose($handle);
+			    $servername = "localhost";
+				$sqlusername = "root";
+				$password = "";
+				$dbname = "charitable";
+				
+				$conn = new mysqli($servername, $sqlusername, $password, $dbname);
 
-		        $handle = fopen("../model/events.json", "w");     
+				
+				if ($conn->connect_error)
+				{
+				  die("Connection failed: " . $conn->connect_error);
+				 	echo "<br>";
+		    		echo "Event create unsuccessful";
+				}
+				else
+				{				
+			        $sql = "INSERT INTO events (ename, type, DOE, Short_description, Details) VALUES ('$ename', '$type', '$DOE', '$Sdescription', '$Details')";
 
+					if ($conn->query($sql) === TRUE)
+					{
+			        	echo "Event Created Successfully";
+			        	header("Location: ../views/Manage_events.php");
+					}
+					else
+					{
+							echo "Error: " . $sql . "<br>" . $conn->error;
+					}
 
-		        if ($decode === NULL)  // checking if the file is empty or not
-		        {            
-		            $event = array(array("event_id"=> $array_count + 1 ,"ename" => $ename,"type" => $_POST['type'], "DOE" => $DOE, "Short_description" => $Sdescription, "Details" => $Details));
-		            $event = json_encode($event);
-		            fwrite($handle, $event);
-		        }
-		        else
-		        {
-		            $decode[] = array("event_id"=> $array_count + 1 ,"ename" => $ename,"type" => $_POST['type'], "DOE" => $DOE, "Short_description" => $Sdescription, "Details" => $Details);
-		            $event = json_encode($decode);
-		            fwrite($handle, $event);
-		        }
-
-		        fclose($handle); 
-				echo "Event Successfully Created";
-				header("Location: ../views/Manage_events.php");
-			}			
-		}	
+					$conn->close();				
+				}			
+			}	
+		}
 		else
 		{
 			echo "Can not process GET REQUEST METHOD";

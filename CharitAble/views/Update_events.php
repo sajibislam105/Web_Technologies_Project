@@ -60,7 +60,7 @@
 				</fieldset>
 
 						<br>
-						<input type="submit" name="submit" value="Submit">
+						<input type="submit" name="submit" value="Update">
 						<a href="">
 
 						<br><br>

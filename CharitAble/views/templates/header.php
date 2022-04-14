@@ -1,10 +1,16 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	
-	<h1 style="color: darkcyan;" align="center">CharitAble</h1>
-	<p align="center"><b>You think, You care, You give.</b></p>
-	<p align="center"><b>Charity Website</b></p>
+	<style>
+		p
+		{
+		 text-align: center;
+		 color: black;
+		}
+	</style>
+	<h1 style="color: tomato;" align="center">CharitAble</h1>
+	<p><b>You think, You care, You give.</b></p>
+	<p><b>Charity Website</b></p>
 
 </head>
 <body>

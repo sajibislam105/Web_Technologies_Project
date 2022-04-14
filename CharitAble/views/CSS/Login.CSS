@@ -1,0 +1,109 @@
+body{
+	
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+}
+
+.header{
+	color: tomato;
+	text-align: center;
+	max-width: 500px;
+	margin: auto;
+	font-size: 50px;
+}
+
+.motto
+{
+	max-width: 400px;
+	margin: auto;
+	font-size: 20px;
+	text-transform: uppercase;	
+	letter-spacing: 1px;
+}
+
+.box
+{
+  text-align: center;
+}
+
+.box1
+{
+	text-align: center;
+	text-transform: 
+}
+
+input[type=text], select {
+  
+  padding: auto;
+  margin: auto;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=password], select {
+  
+  padding: auto;
+  margin: auto;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+ 
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  margin: auto;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+
+/* image CSS and positioning */
+
+div.heart_hand
+{
+	position: fixed;
+  left:300px;
+ 
+  float: left;
+  width: 180px;
+}
+
+
+div.heart_hand img
+{
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+div.hands
+{
+	position: relative;
+  right:300px;
+      
+  float: right;
+  width: 180px;
+}
+
+
+div.hands img
+{
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}

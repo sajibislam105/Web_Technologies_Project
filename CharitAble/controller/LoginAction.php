@@ -9,6 +9,10 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Login</title>
+	<link rel="stylesheet" type="text/css" href="../views/CSS/Login.CSS">
+	<h1 class="header">CharitAble</h1>
+	<p align="center"><b>You think, You care, You give.</b></p>
+	<p align="center"><b>Charity Website</b></p>
 </head>
 <body>
 
@@ -29,14 +33,35 @@
 			$password = test($_POST['password']);
 
 			if (empty($username) || empty($password)) 
-			{
-					echo "Fill up the form properly";
-					echo "<br>";
-					echo "Go back to Login Page and Try again with valid username or password";
-					?>
+			{?>	
+					<style type="text/css">
+						.error
+						{
+							border: 2px solid;
+							padding: 5px 25px 5px 100px;
+							margin: auto;
+							border-color: black;
+							text-align: center;							
+						}
+					</style>
+					
+					<div class="error">
+					<h3 style="color: red">!!!</h3>
+					<p>Fill up the form properly!</p>
+					<p>Go back to Login Page and Try again with valid username or password</p>
+					</div>
+
 					<br><br>
+					<style type="text/css">
+						.back
+						{
+							text-align: center;
+						}
+					</style>
+					<div class="back">
 					<a href="../views/Login.php">Login Page</a>
 					<br>
+					</div>
 					<?php
 					include('../views/templates/footer.php');
 
