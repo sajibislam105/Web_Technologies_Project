@@ -52,49 +52,30 @@
 			}				
 			else
 			{	
-				$handle = fopen("../model/users_list.json", "r");
-				$fr = fread($handle, filesize("../model/users_list.json"));
-				$arr1 = json_decode($fr);
+				$servername = "localhost";
+				$username = "root";
+				$password = "";
+				$dbname = "charitable";
 
-				$flag = false;
-				for ($i=0; $i < count($arr1) ; $i++) 
-				{ 
-					if(($employee_name == $arr1[$i]->Username) && ($arr1[$i]->usertype == "Employee"))
-					{
-							$flag = true;
-							
-							break;
-					}
-					else
-					{
-						$flag = false;						
-					}
-				}
+				$conn = new mysqli($servername, $username, $password, $dbname);				
 
-				if ($flag == true) 
-				{	
-					$arr2 = array();
-					for ($i=0; $i < count($arr1); $i++)
-					{ 
-						if ($employee_name != $arr1[$i]->Username)
-						{
-							array_push($arr2, $arr1[$i]);
-						}
-					}
-					$fc =fclose($handle);
-
-					$handle = fopen("../model/users_list.json", "w");					
-
-					$data = json_encode($arr2);
-					$fw = fwrite($handle, $data);
-					$fc = fclose($handle);
-					//echo '<h4>Employee Username:  ' . $employee_name . ' Deleted</h4>';
-					header('Location: ../views/View_total_employee_list.php');
+				if ($conn->connect_error)
+				{
+				  die("Connection failed: " . $conn->connect_error);
 				}
 				else
-				{
-					echo '<h4 style="color: red;" >' . $employee_name . ' not found </h4>';
-					echo "<br>Please insert the correct username";
+				{					
+					$sql = "DELETE FROM users_list WHERE Username='$employee_name'";
+					if ($conn->query($sql) === TRUE) 
+					{									
+						header('Location: ../views/View_total_employee_list.php');
+					}
+					else 
+					{
+						echo '<h4 style="color: red;" >' . $employee_name . ' not found </h4>';
+						echo "<br>Please insert the correct username";
+					}
+					$conn->close();					
 				}
 			}
 		}

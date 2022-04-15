@@ -54,50 +54,34 @@
 			}				
 			else
 			{	
-				$handle = fopen("../model/events.json", "r");
-				$fr = fread($handle, filesize("../model/events.json"));
-				$arr1 = json_decode($fr);
+				$servername = "localhost";
+				$username = "root";
+				$password = "";
+				$dbname = "charitable";
 
-				$flag = false;
-				for ($i=0; $i < count($arr1) ; $i++) 
-				{ 
-					if(($ename == $arr1[$i]->ename) && ($e_id == $arr1[$i]->event_id) &&($type == $arr1[$i]->type))
-					{
-							$flag = true;
-							
-							break;
-					}
-					else
-					{
-						$flag = false;						
-					}
-				}
+				$conn = new mysqli($servername, $username, $password, $dbname);				
 
-				if ($flag === true) 
-				{	
-					$arr2 = array();
-					for ($i=0; $i < count($arr1); $i++)
-					{ 
-						if ($e_id != $arr1[$i]->event_id)
-						{
-							array_push($arr2, $arr1[$i]);
-						}
-					}
-					$fc =fclose($handle);
-
-					$handle = fopen("../model/events.json", "w");					
-
-					$data = json_encode($arr2);
-					$fw = fwrite($handle, $data);
-					$fc = fclose($handle);
-					echo '<h4>Event Name:  ' . $ename . ' Deleted</h4>';
-					header('Location: ../views/View_events.php');
+				if ($conn->connect_error)
+				{
+				  die("Connection failed: " . $conn->connect_error);
 				}
 				else
-				{
-					echo '<h4 style="color: red;" >' . $ename . ' not found </h4>';
-					echo "<br>Please insert the correct information";
-				}
+				{					
+					$sql = "DELETE FROM events WHERE event_id='$e_id'";
+
+					if ($conn->query($sql) === TRUE) {
+					echo "Record deleted successfully";					
+					header('Location: ../views/View_events.php');
+					}
+					else 
+					{
+					  echo "Error deleting record: " . $conn->error;
+					  echo '<h4 style="color: red;" >' . $ename . ' not found </h4>';
+					  echo "<br>Please insert the correct information";
+					}
+
+					$conn->close();						
+				}				
 			}
 		}
 		else

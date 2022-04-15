@@ -30,42 +30,40 @@
 		<h2 align="center">Verify Organizations</h2>
 		<fieldset>
 	<?php 
+			$servername = "localhost";
+			$username = "root";
+			$password = "";
+			$dbname = "charitable";
+			
+			$conn = new mysqli($servername, $username, $password, $dbname);
 
-	$handle = fopen("../model/verify_organization_list.json", "r");
-	$fr = fread($handle, filesize("../model/verify_organization_list.json"));
-	$decode = json_decode($fr);
-	
-	for ($i=0; $i < count($decode) ; $i++)
-	{	
-		$o_nmame = $decode[$i]->organization_name;
-		$o_type = $decode[$i]->type;
-		$service_license = $decode[$i]->Department_of_social_service_license;
-		$v_status = $decode[$i]->Verification_status;
-	
-	}
-	$fc = fclose($handle);
-	 ?>
-	<?php
-	for ($i=0; $i < count($decode) ; $i++)
-	{
-		echo "<br>";
-		echo "Organization Name: " . $o_nmame;
-		echo "<br><br>";			
-		echo "Organization Type: " . $o_type;
-		echo "<br><br>";				 
-		echo "Department of Social Service License(DSS): " . $service_license;
-		echo "<br><br>";		
-		?>
-	<?php
-		echo "Verification status: <p style='color: red;'>" . $v_status . "</p>";		
-		
-		
-		
-  		}
+			if ($conn->connect_error)
+			{
+			  die("Connection failed: " . $conn->connect_error);
+			}
+			else
+			{
+				$sql = "SELECT * FROM verify_organization_list";
+				$result = $conn->query($sql);
 
-	?>
-	
+				if ($result->num_rows > 0) 
+				{
+				  while($row = $result->fetch_assoc())
+				  {
+				    echo "<b>Organization Name: " . $row["organization_name"]. "</b><br><br>" . "Organization Type: " . $row["type"]. "<br><br>Department of Social Service License(DSS): " . $row["Department_of_social_service_license"]. "<br><br>Verificaton Status: " . $row["Verification_status"]."<br><br>";
+				  }
+				}
+				else 
+				{
+				  echo "No Organization found";
+				}
+				$conn->close();
+			}
+  	
+	?>	
 	</fieldset>
-
+	<br>   
+			<a href="../views/Dashboard.php">Go Back</a>
+	</body>
 	<?php include('templates/footer.php');}  ?>
 </html>

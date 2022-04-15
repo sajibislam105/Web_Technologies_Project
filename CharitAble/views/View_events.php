@@ -64,8 +64,9 @@
 				{
 				  echo "No event found";
 				}
+				$conn->close();	
 			}
-			$conn->close();				
+						
 		?>		
 			</fieldset>
 
