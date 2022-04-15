@@ -33,15 +33,14 @@
 	
 	<?php
 
-		function test($users)	
+		function test($users)
 		{
 			$users = trim($users);
 			$users = stripslashes($users);
 			$users = htmlspecialchars($users);
 			return $users;
 		}		
-	?>		
-	<?php 
+	
 		if ($_SERVER['REQUEST_METHOD'] === "POST")
 		{	
 			$username = $_SESSION['username'];
@@ -55,29 +54,33 @@
 				<?php				
 			}
 			else
-			{						
-				$handle = fopen("../model/users_list.json", "r");
-		        $fr = fread($handle, filesize("../model/users_list.json"));  
-		        $arr1 = json_decode($fr);		        
-		        fclose($handle);
+			{
+				$servername = "localhost";
+				$dbusername = "root";
+				$dbpassword = "";
+				$dbname = "charitable";
+				
+				$conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 
-		        $handle = fopen("../model/users_list.json", "w");
-
-		        for ($i=0; $i < count($arr1); $i++) 
-		        { 
-		        	if ($username == $arr1[$i]->Username) 
-		        	{
-		        		$arr1[$i]->Password = $password;
-		        		$arr1[$i]->Confirm_Password = $password;
-		        	}		        	
-		        }
-		        $users = json_encode($arr1);
-            	$fw = fwrite($handle, $users);
-            	$fc = fclose($handle);
-
-            	if ($fw) 
+				if ($conn->connect_error)
 				{
-					echo "Password changed succesfully";
+				  die("Connection failed: " . $conn->connect_error);
+				}
+				else
+				{
+					$sql = "UPDATE users_list SET Password='$password', Confirm_Password='$password' WHERE Username='$username'";			      
+					if ($conn->query($sql) === TRUE)
+					{
+			        	echo "Password changed Successfully";
+			        	header("Location: ../views/Logout.php");        	
+					}
+					else
+					{
+							echo "Error: " . $sql . "<br>" . $conn->error;
+					}
+
+				$conn->close();
+
 				}
 			}				
 		}

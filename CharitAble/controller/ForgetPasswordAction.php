@@ -3,10 +3,10 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Change Password</title>
+	<title>Forget Password</title>
 </head>
 <body>
-	<h1 style="color: blueviolet;">Change Password Action</h1>	
+	<h1 style="color: blueviolet;">Forget Password Action</h1>	
 	
 	<?php
 
@@ -26,37 +26,49 @@
 			$Npassword = test($_POST['Npassword']);
 			$CNpassword = test($_POST['CNpassword']);
 			if (empty($_POST['Npassword']) || empty($_POST['CNpassword']))
-			{
+			{		
 				echo "Fill up the boxes properly";			
 				?>
 				<br>
 				<p style="color:red;"><b>Password did not changed</b></p>
-				<?php				
+				<?php					
 			}
 			else
-			{						
-				$handle = fopen("../model/users_list.json", "r");
-		        $fr = fread($handle, filesize("../model/users_list.json"));  
-		        $arr1 = json_decode($fr);		        
-		        fclose($handle);
-
-		        $handle = fopen("../model/users_list.json", "w");
-
-		        for ($i=0; $i < count($arr1); $i++) { 
-		        	if ($username == $arr1[$i]->Username) 
-		        	{
-		        		$arr1[$i]->Password = $Npassword;
-		        		$arr1[$i]->Confirm_Password = $CNpassword;
-		        	}		        	
-		        }
-		        $users = json_encode($arr1);
-            	$fw = fwrite($handle, $users);
-            	$fc = fclose($handle);
-
-            	if ($fw) 
+			{
+				if ($Npassword == $CNpassword) 
 				{
-					echo "Password Reset succesful";
+					$servername = "localhost";
+					$dbusername = "root";
+					$dbpassword = "";
+					$dbname = "charitable";
+					
+					$conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
+					if ($conn->connect_error)
+					{
+					  die("Connection failed: " . $conn->connect_error);
+					}
+					else
+					{
+						$sql = "UPDATE users_list SET Password='$Npassword', Confirm_Password='$CNpassword' WHERE Username='$username'";			      
+						if ($conn->query($sql) === TRUE)
+						{
+				        	echo "Password Reset succesful";
+				        	header("Location: ../views/Login.php");        	
+						}
+						else
+						{
+							echo "Error: " . $sql . "<br>" . $conn->error;
+						}
+
+					$conn->close();
+					
+					}
 				}
+				else
+				{
+					echo "Password and Confirm Password does not match";
+				}
+            	
 			}				
 		}
 		else

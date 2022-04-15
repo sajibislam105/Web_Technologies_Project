@@ -26,59 +26,57 @@
 	<title>View Profile</title>
 	<?php include('templates/header.php'); ?>
 	<h2 align="center">My Profile</h2>
-	<?php
-	$username = $_SESSION['username'];
-	$handle = fopen("../model/users_list.json", "r");
-	$fr = fread($handle, filesize("../model/users_list.json"));
-	$decode = json_decode($fr);
-	
-	for ($i=0; $i < count($decode) ; $i++)
-	{ 
-		if ($username == $decode[$i]->Username) 
-		{
-			$firstname = $decode[$i]->firstname;
-			$lastname = $decode[$i]->lastname;
-			$Gender = $decode[$i]->Gender;
-			$DOB = $decode[$i]->DOB;
-			$Religion = $decode[$i]->Religion;
-			$Present_Address = $decode[$i]->Present_Address;
-			$Permanent_Address = $decode[$i]->Permanent_Address;
-			$Email = $decode[$i]->Email;
-			$Phone = $decode[$i]->Phone;
-			$pwl = $decode[$i]->pwl;
-			$username = $decode[$i]->Username;
-			$usertype = $decode[$i]->usertype;
-		}
-	}
-	$fc = fclose($handle);
-?>
 	<fieldset>
-		<legend><b>Profile Information</b></legend>		
-				
+		<legend><b>Profile Information</b></legend>	
 	<?php
-		echo "<br>";
-		echo "Username: " . $username;
-		echo "<br><br>";			
-		echo "Name: " . $firstname . " "  . $lastname;
-		echo "<br><br>";				 
-		echo "Gender: " . $Gender;
-		echo "<br><br>";							
-		echo "Date of Birth: " . $DOB;
-		echo "<br><br>";				
-		echo "Religion: " . $Religion;
-		echo "<br><br>";			
-		echo "Present Address: " . $Present_Address;
-		echo "<br><br>";				
-		echo "Permanent Address: " . $Permanent_Address;
-		echo "<br><br>";				
-		echo "Phone: " . $Phone;
-		echo "<br><br>";
-		echo "Email: " . $Email;
-		echo "<br><br>";				
-		echo "Personal Website Link: " . $pwl;
-		echo "<br><br>";
-		echo "User Type: <b>" . $usertype . "</b>";
-		echo "<br><br>";
+			$username = $_SESSION['username'];
+
+			$servername = "localhost";
+			$dbusername = "root";
+			$password = "";
+			$dbname = "charitable";
+			
+			$conn = new mysqli($servername, $dbusername, $password, $dbname);
+
+			if ($conn->connect_error)
+			{
+			  die("Connection failed: " . $conn->connect_error);
+			}
+			else
+			{
+				$sql = "SELECT * FROM users_list WHERE Username='$username'";
+				$result = $conn->query($sql);
+
+				if ($result->num_rows > 0) 
+				{
+					while($row = $result->fetch_assoc())
+				  {	
+				  	echo "<br>";
+				  	echo "User Type:" . $row["usertype"];
+				  	echo "<br><br>";
+				  	echo "Username:" . $row["Username"];
+				  	echo "<br><br>";
+					echo "Name:" . $row["firstname"] . $row['lastname'];
+					echo "<br><br>";
+					echo "Gender:" . $row["Gender"];
+				  	echo "<br><br>";
+					echo "Date of Birth:" . $row["DOB"];
+					echo "<br><br>";				 
+					echo "Religion:" . $row["Religion"];
+				  	echo "<br><br>";
+					echo "Present Address:" . $row["Present_Address"];
+					echo "<br><br>";
+					echo "Permanent Address:" . $row["Permanent_Address"];
+				  	echo "<br><br>";
+					echo "Phone:" . $row["Phone"];
+					echo "<br><br>";				 
+					echo "Email:" . $row["Email"];
+				  	echo "<br><br>";
+					echo "Personal Website Link:" . $row["pwl"];
+					echo "<br>";								
+				}				
+			}
+		}
 	?>
 	</fieldset>
 

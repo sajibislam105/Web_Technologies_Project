@@ -1,5 +1,4 @@
 <?php 
-
 	session_start();	
 	if (!isset($_SESSION['username']) )
 	{
@@ -16,7 +15,6 @@
 
 		<?php
 		include('templates/footer.php');
-
 	}
 	else
 	{
@@ -25,42 +23,40 @@
 		<html>
 			<title>View Feedbacks</title>			
 			<?php include('templates/header.php'); ?>
-
-			<h2 align="center">Feedbacks</h2>
-			
+			<h2 align="center">Feedbacks</h2>			
 	<?php 
 		
-		$handle = fopen("../model/feedback.json", "r");
-		$fr = fread($handle, filesize("../model/feedback.json"));
-		$arr1 = json_decode($fr);				
-
-		if ($arr1 === NULL) {
-			echo "<p>No Feedback given.</p>";
-		}
-		else
-		{
-			echo "<table class='center' border='1'>";
-			echo "<thead>";
-			echo "<tr>";			
-			echo "<th><b>Username</b></th>";
-			echo "<th><b>Subject</b></th>";
-			echo "<th><b>Feedback</b></th>";
-			echo "</tr>";
-			echo "</thead>";
-			echo "<tbody>";
-			for ($i = 0; $i < count($arr1); $i++) 
+		$servername = "localhost";
+			$username = "root";
+			$password = "";
+			$dbname = "charitable";			
+			$conn = new mysqli($servername, $username, $password, $dbname);
+			if ($conn->connect_error)
 			{
-				echo "<tr>";
-				echo "<td>" . $arr1[$i]->Username . "</td>";
-				echo "<td>" . $arr1[$i]->Subject . "</td>";
-				echo "<td>" . $arr1[$i]->feedback . "</td>";				
-				echo "</tr>";
+			  die("Connection failed: " . $conn->connect_error);
 			}
-			echo "</tbody>";
-			echo "</table>";
+			else
+			{
+				$sql = "SELECT * FROM feedback";
+				$result = $conn->query($sql);
 
-		}
-			$fc = fclose($handle);
+				if ($result->num_rows > 0) 
+				{		
+					$count = 0;							  
+					while($row = $result->fetch_assoc())
+					{
+						$count++;
+						echo "Serial: " . $count . "<br><br>" ;
+					    echo "Username: " . $row["Username"]. "<br><br>" . "Subject: " . $row["Subject"]. "<br><br>Feedback: " . $row["feedback"] . "<br><br>";
+					    echo "<br>               <br>";
+					}
+				}
+				else 
+				{
+				  echo "No event found";
+				}
+				$conn->close();	
+			}
 	}
 	?>			
 			

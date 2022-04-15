@@ -1,7 +1,5 @@
-<?php 
-	
+<?php 	
 	session_start();
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,7 +13,6 @@
 	<p align="center"><b>Charity Website</b></p>
 </head>
 <body>
-
 	<?php
 
 		function test($data)	
@@ -34,65 +31,84 @@
 
 			if (empty($username) || empty($password)) 
 			{?>	
-					<style type="text/css">
-						.error
-						{
-							border: 2px solid;
-							padding: 5px 25px 5px 100px;
-							margin: auto;
-							border-color: black;
-							text-align: center;							
-						}
-					</style>
-					
+				<style type="text/css">
+					.error
+					{
+						border: 2px solid;
+						padding: 5px 25px 5px 100px;
+						margin: auto;
+						border-color: black;
+						text-align: center;							
+					}
+				</style>					
 					<div class="error">
 					<h3 style="color: red">!!!</h3>
 					<p>Fill up the form properly!</p>
 					<p>Go back to Login Page and Try again with valid username or password</p>
 					</div>
-
 					<br><br>
-					<style type="text/css">
-						.back
-						{
-							text-align: center;
-						}
-					</style>
-					<div class="back">
-					<a href="../views/Login.php">Login Page</a>
-					<br>
-					</div>
-					<?php
-					include('../views/templates/footer.php');
-
+				<style type="text/css">
+					.back
+					{
+						text-align: center;
+					}
+				</style>
+				<div class="back">
+				<a href="../views/Login.php">Login Page</a>
+				<br>
+				</div>
+				<?php
+				include('../views/templates/footer.php');
 			}
 			else
-			{			
+			{
+				$servername = "localhost";
+				$dbusername = "root";
+				$dbpassword = "";
+				$dbname = "charitable";
+				
+				$conn = new mysqli($servername, $dbusername, $dbpassword, $dbname);
 
-				$handle = fopen("../model/users_list.json", "r");
-				$fr = fread($handle, filesize("../model/users_list.json"));
-				$arr1 = json_decode($fr);	
-					
-
-				for ($i=0; $i < count($arr1) ; $i++) 
-				{ 
-					if(($username == $arr1[$i]->Username) && $password == $arr1[$i]->Password)			
+				if ($conn->connect_error)
+				{
+				  die("Connection failed: " . $conn->connect_error);
+				}
+				else
+				{
+					$sql = "SELECT Username,usertype,Password FROM users_list WHERE Username='$username' AND Password='$password'";
+					$result = $conn->query($sql);
+					if ($result->num_rows >0) 						
 					{
-						$_SESSION['username'] = $username;
-						header("Location: ../views/Dashboard.php");
+						$row = $result->fetch_assoc();
+						if( ($row["Username"] == $username) AND ($row["Password"] == $password) AND ($row["usertype"] == 'Admin'))
+						{
+							$_SESSION['username'] = $username;
+							header("Location: ../views/Dashboard.php");
+						}
+						elseif (($row["Username"] == $username) AND ($row["Password"] == $password) AND !($row["usertype"] == 'Admin')) 
+						{
+						 	$_SESSION['error_message'] = "Login Failed! You are not admin";
+							header("Location: ../views/Login.php");
+						}
+						else
+						{
+							$_SESSION['error_message'] = "Login Failed! Incorrect Username";
+							header("Location: ../views/Login.php");
+						}
 					}
-					else
-					{ 
-						$_SESSION['error_message'] = "Login Failed!";
+					else 
+					{
+				  		$_SESSION['error_message'] = "Login Failed! Incorrect Username or Password";
 						header("Location: ../views/Login.php");
 					}
-				}		
+				$conn->close();
+				}								
 			}
 		}
 		else
 		{
 			echo "Can not process GET REQUEST METHOD";
 		}
-	?>
+?>
 </body>
 </html>
