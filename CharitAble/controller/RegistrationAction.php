@@ -173,6 +173,10 @@
 				else
 				{
 					echo "Confirm Password did not match";
+					$checker = true; //1:12 AM. 16-April
+					?>
+					<p style="color:red;"><b>Registration Failed</b></p>
+					<?php
 				}				
 			}	
 		}

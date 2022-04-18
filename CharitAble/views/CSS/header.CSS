@@ -1,0 +1,75 @@
+* {box-sizing: border-box;}
+
+body { 
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.website_name {
+  text-align: center;
+  color: tomato;
+  font-family: Copperplate, fantasy;
+  font-size: 26px;
+  padding: auto;
+}
+
+.website_name_details{
+  font-size: 22px;
+  font-family: 'My Soul', cursive;
+}
+
+.welcome_name {
+  text-align: left;
+  font-size: 15px;  
+  padding-left: 20px;
+}
+
+p
+{
+ text-align: center;
+ color: black;
+}
+
+.header {
+  overflow: hidden;
+  background-color: #f1f1f1; 
+  padding: 20px 10px;
+}
+
+.header a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px; 
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+.header a:hover {
+  background-color: tomato;
+  opacity: 0.9;
+  color: black;
+}
+
+.header a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+.header-right {
+  float: right;
+}
+
+@media screen and (max-width: 500px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .header-right {
+    float: none;
+  }
+}

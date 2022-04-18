@@ -1,12 +1,30 @@
-body{
-	
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-attachment: scroll;
-	margin: 0;
-	padding: 0;
-	height: 100vh;
+body { 
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f1f1f1;
 }
+
+.website_name {
+  text-align: center;
+  color: tomato;
+  font-family: Copperplate, fantasy;
+  font-size: 25px;  
+  padding-top: 1vh;
+
+}
+
+.website_name_details{
+  font-size: 22px;
+  font-family: 'My Soul', cursive;
+  color: black;
+}
+
+.welcome_name {
+  text-align: left;
+  font-size: 15px;  
+  padding-left: 20px;
+}
+
 
 .header{
 	color: tomato;
@@ -18,22 +36,16 @@ body{
 
 .motto
 {
-	max-width: 400px;
+  max-width: 400px;
 	margin: auto;
 	font-size: 20px;
-	text-transform: uppercase;	
+	text-transform: uppercase;
 	letter-spacing: 1px;
 }
 
 .box
 {
   text-align: center;
-}
-
-.box1
-{
-	text-align: center;
-	text-transform: 
 }
 
 input[type=text], select {
@@ -58,52 +70,18 @@ input[type=password], select {
 
 input[type=submit] {
  
-  background-color: #4CAF50;
-  color: white;
-  padding: 10px 20px;
-  margin: auto;
-  border: none;
-  border-radius: 4px;
+  font-weight: bold;
   cursor: pointer;
+  float: center;  
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px; 
+  line-height: auto;
+  border-radius: 4px;
 }
 
-input[type=submit]:hover {
-  background-color: #45a049;
-}
-
-
-/* image CSS and positioning */
-
-div.heart_hand
-{
-	position: fixed;
-  left:300px;
- 
-  float: left;
-  width: 180px;
-}
-
-
-div.heart_hand img
-{
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-div.hands
-{
-	position: relative;
-  right:300px;
-      
-  float: right;
-  width: 180px;
-}
-
-
-div.hands img
-{
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
+input[type=submit]:hover {  
+  background-color: tomato;
+  color: black;
 }

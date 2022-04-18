@@ -4,13 +4,16 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Registration Form</title>
+
+	<script src="JS/JS/javascript.js"></script>
+
 	<h1 style="color: darkcyan;" align="center">CharitAble</h1>
 	<p align="center"><b>You think, You care, You give.</b></p>
 	<p align="center"><b>Charity Website</b></p>
 </head>
 <body>
 	<h1 align="center">Registration Form</h1>	
-	<form action="../controller/RegistrationAction.php" method="POST" novalidate enctype="application/x-www-form-urlencoded">
+	<form name="registration" action="../controller/RegistrationAction.php" method="POST" novalidate enctype="application/x-www-form-urlencoded" onsubmit="return validate_registration();">
 
 	<fieldset>
 		<legend style="text-align: center;">Group 1: Basic Information</legend>
@@ -37,7 +40,7 @@
 
 			<br><br>	
 
-			<label for="Religion">Choose your Religion &nbsp&nbsp &nbsp</label><span style="color:red">*</span>
+			<label for="Religion">Choose your Religion &nbsp</label><span style="color:red">*</span>
 			<select name="Religion" id="Religion" required>
 				<option value="None"></option>
 				<option value="Islam">Islam</option>
@@ -55,12 +58,12 @@
 
 			<br>
 			<label for="Present_Address">Present Address</label><span style="color:red">*</span><br>
-			<textarea rows="2" cols="50" name="Present Address" id="Present_Address" placeholder="Enter your present address..." required></textarea>
+			<textarea rows="2" cols="50" name="Present_Address" id="Present_Address" placeholder="Enter your present address..." required></textarea>
 			
 			<br><br>
 
 			<label for="Permanent_Address">Permanent Address </label><br>
-			<textarea rows="2" cols="50"  name="Permanent Address" id="Permanent_Address" placeholder="Enter your permanent address..."></textarea>
+			<textarea rows="2" cols="50"  name="Permanent_Address" id="Permanent_Address" placeholder="Enter your permanent address..."></textarea>
 			
 			<br><br>		
 

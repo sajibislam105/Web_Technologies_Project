@@ -34,7 +34,7 @@
 			width: 25%;	
 			height: auto;
 			word-spacing: 2px;
-			font-size: 18px;		
+			font-size: 18px;	
 		}
 
 		.copyright
@@ -59,7 +59,7 @@
 			</div>
 
 			<div>
-				<p class="footer_aboutus_details">CharitAble connects nonprofit donors and underprivileged. We word as a non-profit organizations and also help other non-profit organizations so that they can serve their own communities. This way we can reach more people all over the world.</p>
+				<p class="footer_aboutus_details">CharitAble connects nonprofit donors and underprivileged. We work as a non-profit organizations and also help other non-profit organizations so that they can serve their own communities. This way we can reach more people all over the world.</p>
 			</div>		
 
 			<div class="copyright">
