@@ -25,9 +25,12 @@
 	
 	<?php include('templates/header.php'); ?>
 	<title>Fire Employee</title>
+
+	<script src="JS/fire.js"></script>
+
 	<h1 align="center">Fire Employee</h1>
 	<br>
-	<form action="../controller/HumanResourceFireAction.php" method="POST"  novalidate>
+	<form name="fire" action="../controller/HumanResourceFireAction.php" method="POST"  novalidate onsubmit="return(fire_employee());">
 	<fieldset>		
 					<br>
 						<label for="employee_name">Employee Username:</label>

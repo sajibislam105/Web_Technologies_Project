@@ -5,9 +5,7 @@
 	{
 		?>
 		<title>Access Denied</title>
-		<h1 style="color: darkcyan;" align="center">CharitAble</h1>
-		<p align="center"><b>You think, You care, You give.</b></p>
-		<p align="center"><b>Charity Website</b></p>
+		<?php include('templates/half_header.php') ?>
 		<br>
 		<h1 style="color: red; text-align: center;">Please Login first to access this page</h1>
 		<p style="text-align: center;">You do not the permission to access this page</p>
@@ -25,8 +23,23 @@
 		<html>
 			<title>Members Record</title>			
 			<?php include('templates/header.php'); ?>
+
+			<script src="JS/membersearching.js"></script>
+
 			<h2 align="center">All Members Record</h2>
 			<br>			
+
+			<form name="membersearching" action="../controller/Member_search.php" method="GET"  onsubmit="validate_search(this); return false;" novalidate>
+				<label for="search">Search specific Member</label>
+				<input type="text" name="s" id="s" autofocus required>
+
+				<span id="errh"></span>
+				<br>
+				<input type="submit" name="search_submit" value="Search" >
+				<span id="hint"></span>
+				<br><br>
+			</form>
+			
 	<?php 
 			
 		$servername = "localhost";

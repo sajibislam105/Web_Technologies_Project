@@ -30,6 +30,7 @@
 	</head>
 	<?php include('templates/header.php')  ?>
 	<link rel="stylesheet" href="CSS/Dashboard.CSS">
+	<script src="JS/fire_employee.js"></script>
 	<?php 
 		//printed the value of cookies
 		if(isset($_COOKIE['UserVisit']))
