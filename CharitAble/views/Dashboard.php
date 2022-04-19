@@ -1,16 +1,16 @@
 <?php 
+	
+		
 
 	session_start();	
 	if (!isset($_SESSION['username']) )
 	{
 		?>
 		<title>Access Denied</title>
-		<h1 style="color: darkcyan;" align="center">CharitAble</h1>
-		<p align="center"><b>You think, You care, You give.</b></p>
-		<p align="center"><b>Charity Website</b></p>
+		<?php include('templates/half_header.php') ?>
 		<br>
-		<h1 style="color: red; text-align: center;">Please Login first to access this page</h1>
-		<p style="text-align: center;">You do not the permission to access this page</p>
+		<h1 style="text-align: center;">Please Login first to access this page</h1>
+		<p style="text-align: center;">You do not have the permission to access this page</p>
 		<br>
 		<a href="../views/login.php"><p style="text-align: center;">Login Page</p></a>
 
@@ -21,42 +21,71 @@
 	else
 	{
 		?>
-		<!DOCTYPE html>
-<html>
-
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Dashboard</title>
+	</head>
 	<?php include('templates/header.php')  ?>
+	<link rel="stylesheet" href="CSS/Dashboard.CSS">
+	<?php 
+		//printed the value of cookies
+		if(isset($_COOKIE['UserVisit']))
+		{
+		$last = $_COOKIE['UserVisit'];
+		echo "Welcome back! <br> You last visited on ". $last;
+		}		
+	 ?>
+	<h2 >Dashboard</h2>	
 
-	<title>Dashboard</title>
-	<h2 align="center">Dashboard</h2>
+<body>		
+	
+	<div class="box">		
+		<br><br>
 
-	<fieldset>
-		<legend style="text-align: center;">Operations</legend>			
-		
-		<br><br>
-		<label>1.</label>
-		<a href="../views/Manage_Events.php">Manage Events</a>
-		<br><br>
-		<label>2.</label>	
-		<a href="../views/Human_resources.php">Human Resources</a>
-		<br><br>
-		<label>3.</label>
-		<a href="../views/Manage_users.php">Manage Users</a>
-		<br><br>
-		<label>4.</label>	
-		<a href="../views/verify_organization.php">Verify Organization</a>		
-		<br><br>		
-		<label>5.</label>
-		<a href="../views/Member_record.php">Member Records</a>	
-		<br><br>
-		<label>6.</label>
-		<a href="../views/view_feedback.php">View Feedbacks</a>	
-		<br><br>
-		
-	</fieldset>
+		<div class="Manage_Events" id="Dashboard">			
+			<a href="../views/Manage_Events.php">Manage Events</a>
+		</div>
 
-	<?php include('templates/footer.php') ?>
+		<br><br>
+		<div class="Human_resources" id="Dashboard">
+			
+			<a href="../views/Human_resources.php">Human Resources</a>
+		</div>
+
+		<br><br>
+
+		<div class="Manage_users" id="Dashboard">
+			
+			<a href="../views/Manage_users.php">Manage Users</a>
+		</div>
+
+		<br><br>
+		<div class="verify_organization" id="Dashboard">	
+			<a href="../views/verify_organization.php">Verify Organization</a>		
+		</div>
+
+		<br><br>
+
+		<div class="Member_record" id="Dashboard">
+			<a href="../views/Member_record.php">Member Records</a>	
+		</div>	
+		<br><br>
+
+		<div class="view_feedback" id="Dashboard">
+			<a href="../views/view_feedback.php">View Feedbacks</a>	
+		</div>
+
+		<br><br>
+	</div>	
+
+</body>
 </html>
+<?php 
+include('templates/footer.php') ?>
 <?php
 	}
-
-?>
+ 		
+ ?> 

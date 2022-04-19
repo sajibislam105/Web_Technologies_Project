@@ -1,5 +1,11 @@
 <?php 
+//cookies
+	$Month = 2592000 + time();
+		$date = new DateTime(null, new DateTimeZone('Asia/Dhaka'));
 
+		//this adds 30 days to the current time
+		setcookie("UserVisit", $date->format("F jS - g:i a"), $Month);
+		
 	session_start();
 
 	if(isset($_SESSION['username']))
@@ -16,40 +22,32 @@
 	<title>Login</title>	
 
 	<link rel="stylesheet" href="CSS/Login.CSS">
-	<script src="JS/javascript.js"></script>
-
-	<div class="header">
-		<div class="website_name">
-				<h1>CharitAble</h1>
-		</div>
-		<div class="website_name_details">
-				<p>You think, You care, You give.</p>
-		</div>
-	</div>
-</head>
+	<script src="JS/Login.js"></script>
+	<?php include('templates/half_header.php') ?>
+	</head>
 <body>
 
 	
 
-	<form name="loginform" action="../controller/LoginAction.php" method="POST" novalidate onsubmit="return validate_login();" >
+	<form name="loginform" action="../controller/LoginAction.php" method="POST" novalidate onsubmit="return( validate_login());" >
 		<div class="box">			
 
-			<label for="username">Username</label>
-			<input type="text" name="username" id="username" required autofocus>
+			<label style="font-weight: bold; "for="username">Username:</label>
+			<input type="text" name="username"id="username" required autofocus>
 			<br><br>
-
-			<label for="password">Password</label>
+			<label style="font-weight: bold;" for="password">Password:</label>
 			<input type="password" name="password" id="password" required>
 			<br><br>
-
 			<input type="submit" name="Login" value="Login">
-
-			<br><br>
-			<a href="registration.php">Registration</a>
-			<br>
-			<a href="forgot_password.php">Forgotten Password?</a>
-			<br><br>
+			
+			<div class="registration">
+				<p><a href="registration.php">Registration</a></p>
+			</div>	
+			<div class="forgot_password">
+				<p><a href="forgot_password.php">Forgotten Password?</a></p>
+			</div>			
 		</div>	
+
 	</form>
 	<p id="msg"></p>
 </body>

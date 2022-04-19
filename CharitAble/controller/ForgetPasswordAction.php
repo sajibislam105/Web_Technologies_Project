@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Forget Password</title>
+	<?php include('../views/templates/half_header.php') ?>
 </head>
 <body>
 	<h1 style="color: blueviolet;">Forget Password Action</h1>	
@@ -70,13 +71,14 @@
 				}
             	
 			}				
-		}
+		} 
 		else
 		{
-			echo "Can not process GET REQUEST METHOD";
-		}	        
+			echo "Can not process get REQUEST ";
+		}      
 	?>
 	<br><br>
-	<a href="../views/Login.php">Go Back
+	<a href="../views/Login.php">Go Back</a>
+	<?php include('../views/templates/footer.php') ?>
 </body>
 </html>

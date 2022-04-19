@@ -4,12 +4,10 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Registration Action</title>
-	<h1 style="color: darkcyan;" align="center">CharitAble</h1>
-	<p align="center"><b>You think, You care, You give.</b></p>
-	<p align="center"><b>Charity Website</b></p>
+	<?php include('../views/templates/half_header.php') ?>
 </head>
 <body>
-	<h1 style="color: blueviolet;">Registration Action</h1>	
+	<h1>Registration Action</h1>	
 	
 	<?php
 

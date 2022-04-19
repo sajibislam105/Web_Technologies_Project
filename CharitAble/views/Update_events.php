@@ -5,11 +5,10 @@
 	{
 		?>
 		<title>Access Denied</title>
-		<h1 style="color: darkcyan;" align="center">CharitAble</h1>
-		<p align="center"><b>You think, You care, You give.</b></p>
-		<p align="center"><b>Charity Website</b></p>
+		
+		<?php include('templates/half_header.php') ?>
 		<br>
-		<h1 style="color: red; text-align: center;">Please Login first to access this page</h1>
+		<h1 style="text-align: center;">Please Login first to access this page</h1>
 		<p style="text-align: center;">You do not the permission to access this page</p>
 		<br>
 		<a href="../views/login.php"><p style="text-align: center;">Login Page</p></a>
@@ -25,10 +24,10 @@
 			<html>
 				<?php include('templates/header.php')  ?>
 				<title>Update Event</title>
-				
+				<script src="JS/create_event.js"></script>
 				<br><br>
 				<h1 align="center">Events Form</h1>	
-				<form action="../controller/ManageEventsUpdateAction.php" method="POST" novalidate enctype="application/x-www-form-urlencoded">
+				<form name="update_event" action="../controller/ManageEventsUpdateAction.php" method="POST" novalidate enctype="application/x-www-form-urlencoded" onsubmit="return(validate_update_event());">
 
 				<fieldset>		
 					<br>
@@ -49,7 +48,7 @@
 						<br><br>
 						<label for="Short_description">Short Description</label>
 						<br>
-						<textarea rows="3" cols="50" name="Short description" id="Short_description" placeholder="Write summary of the event..." required></textarea>
+						<textarea rows="3" cols="50" name="Short_description" id="Short_description" placeholder="Write summary of the event..." required></textarea>
 						
 						<br><br>
 

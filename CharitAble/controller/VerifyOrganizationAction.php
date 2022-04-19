@@ -5,11 +5,8 @@
 	{
 		?>
 		<title>Access Denied</title>
-		<h1 style="color: darkcyan;" align="center">CharitAble</h1>
-		<p align="center"><b>You think, You care, You give.</b></p>
-		<p align="center"><b>Charity Website</b></p>
-		<br>
-		<h1 style="color: red; text-align: center;">Please Login first to access this page</h1>
+		<?php include('../views/templates/half_header.php') ?>
+		<h1 style="text-align: center;">Please Login first to access this page</h1>
 		<p style="text-align: center;">You do not the permission to access this page</p>
 		<br>
 		<a href="../views/login.php"><p style="text-align: center;">Login Page</p></a>

@@ -5,9 +5,7 @@
 	{
 		?>
 		<title>Access Denied</title>
-		<h1 style="color: darkcyan;" align="center">CharitAble</h1>
-		<p align="center"><b>You think, You care, You give.</b></p>
-		<p align="center"><b>Charity Website</b></p>
+		<?php include('../views/templates/half_header.php') ?>
 		<br>
 		<h1 style="color: red; text-align: center;">Please Login first to access this page</h1>
 		<p style="text-align: center;">You do not the permission to access this page</p>
@@ -26,9 +24,11 @@
 	
 	<?php include('templates/header.php'); ?>
 	<title>Delete Events</title>
+
+	<script src="JS/create_event.js"></script>
 	<h1 align="center">Delete Events</h1>
 	<br>
-	<form action="../controller/ManageEventsDeleteAction.php" method="POST"  novalidate>
+	<form name="delete_event" action="../controller/ManageEventsDeleteAction.php" method="POST"  novalidate onsubmit="return(validate_delete_event());">
 	<fieldset>		
 					<br>
 						<label for="ename">Event Name:</label>

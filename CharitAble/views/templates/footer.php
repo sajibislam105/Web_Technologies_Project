@@ -8,22 +8,23 @@
 <body>
 <footer>
 	<style>
-		
+
 		.footer
 		{
-			background-color: grey;
-			color: white;		
-
+			margin: 0;
+			background-color: darkgrey;					
+			font-family: Arial, sans-serif;
 		}
 
 		.footer_aboutus
 		{
 			text-align: center;
 			font-weight: bold;
-			color: lightgreen;
-			padding-top: 1px;	
+			color: tomato;
+			padding-top: 3px;
 			text-transform: capitalize;
 			font-size: 24px;
+			opacity: 0.9;
 		}
 
 		.footer_aboutus_details
@@ -31,16 +32,19 @@
 			
 			text-align: center;
 			margin: auto;
-			width: 25%;	
+			padding-bottom: 25px;
+			width: 50%;	
 			height: auto;
 			word-spacing: 2px;
 			font-size: 18px;	
+			font-family: Arial, sans-serif;
+			color: floralwhite;
 		}
 
 		.copyright
 		{			
 			background-color: black;
-			color: white;
+			color: floralwhite;
 			font-weight: bold;
 			text-align: center;
 			height: auto;
@@ -55,7 +59,7 @@
 		<div class="footer">
 
 			<div class="footer_aboutus">
-				<p style="color: lightgreen;">About us</p>
+				<p>About us</p>
 			</div>
 
 			<div>
@@ -70,3 +74,4 @@
 		
 </footer>
 </body>
+</html>
