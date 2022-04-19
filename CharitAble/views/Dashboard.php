@@ -35,7 +35,7 @@
 		if(isset($_COOKIE['UserVisit']))
 		{
 		$last = $_COOKIE['UserVisit'];
-		echo "Welcome back! <br> You last visited on ". $last;
+		echo "You last visited on ". $last;
 		}		
 	 ?>
 	<h2 >Dashboard</h2>	

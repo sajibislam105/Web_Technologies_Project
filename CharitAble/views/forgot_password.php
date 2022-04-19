@@ -88,6 +88,7 @@
 						<div class="found">
 							<h4>Username <?php echo $username;  ?> found and information found </h4>						
 						</div>
+						
 						<form action="../controller/ForgetPasswordAction.php" method="POST">
 
 						<div class="box2">

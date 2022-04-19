@@ -5,9 +5,7 @@
 	{
 		?>
 		<title>Access Denied</title>
-		<h1 style="color: darkcyan;" align="center">CharitAble</h1>
-		<p align="center"><b>You think, You care, You give.</b></p>
-		<p align="center"><b>Charity Website</b></p>
+		<?php include('templates/half_header.php') ?>
 		<br>
 		<h1 style="color: red; text-align: center;">Please Login first to access this page</h1>
 		<p style="text-align: center;">You do not the permission to access this page</p>
@@ -26,14 +24,16 @@
 	<title>Change Password</title>
 	<?php include('templates/header.php')  ?>
 
+	<script src="JS/Change_password.js"></script>
+
 		<h2 align="center">Change Password</h2>
 
-		<form action="../controller/ChangepasswordAction.php" method="POST" enctype="application/x-www-form-urlencoded">
+		<form name="change_password" action="../controller/ChangepasswordAction.php" method="POST" enctype="application/x-www-form-urlencoded" onsubmit="return(Change_password());">
 			<fieldset>
-				<label for="uname">Username</label><span style="color:red">*</span>
+				<label for="uname">Username</label>
 				<input type="text" name="uname" id="uname" value="<?php echo $_SESSION['username'] ?>" disabled required>			
 				<br><br>
-				<label for="password">Password</label><span style="color:red">*</span>
+				<label for="password">Password</label>
 				<input type="password" name="password" id="password" placeholder="new password">
 				<br><br>		
 				<input type="submit" name="Update" value="Update">

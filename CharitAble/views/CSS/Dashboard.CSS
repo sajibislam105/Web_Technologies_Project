@@ -14,17 +14,17 @@ h2{
 .box {
 
 text-align: center;
-width: 1000px;
-height: 400px;
+width: 700px;
+height: 200px;
 border: 5px solid tomato;
 padding: 25px;
 margin-bottom: 10px;
-margin-left:22%;
+margin-left:33%;
 }
 
 .Manage_Events{
 	display: inline-block;
-	right:  360px;
+	right:  280px;
 	position: relative;	
 	background: transparent;	
 	min-height: 60px ;
@@ -51,22 +51,143 @@ a{
 	opacity: 0.9;
 }
 
-.Human-resources{
+.Human_resources{
 
+	display: inline-block;
+	right:  160px;
+	bottom:  82px;
+	position: relative;	
+	background: transparent;	
+	min-height: 60px ;
+	min-width: 100px;
+	border: 1px solid tomato;
+
+}
+
+.Human_resources a{	
+	display: inline-block;
+	color: black;
+	position: absolute;	
+	top:  10px;
+	right: 5px;
+	font-family: Copperplate,fantasy;
+}
+
+.Human_resources:hover{
+
+	background-color: tomato;
+	opacity: 0.9;
 }
 
 .Manage_users{
 
+	display: inline-block;
+	right:  40px;
+	bottom:  164px;
+	position: relative;	
+	background: transparent;	
+	min-height: 60px ;
+	min-width: 90px;
+	border: 1px solid tomato;
+
 }
+
+.Manage_users a{	
+	display: inline-block;
+	color: black;
+	position: absolute;	
+	top:  10px;
+	right: 5px;
+	font-family: Copperplate,fantasy;
+}
+
+.Manage_users:hover{
+
+	background-color: tomato;
+	opacity: 0.9;
+}
+
 
 .verify_organization{
 
+	display: inline-block;
+	right:  -75px;
+	bottom:  247px;
+	position: relative;	
+	background: transparent;	
+	min-height: 60px ;
+	min-width: 90px;
+	border: 1px solid tomato;
+
+}
+
+.verify_organization a{	
+	display: inline-block;
+	color: black;
+	position: absolute;	
+	top:  10px;
+	right: 5px;
+	font-family: Copperplate,fantasy;
+}
+
+.verify_organization:hover{
+
+	background-color: tomato;
+	opacity: 0.9;
 }
 
 .Member_record{
 
+	display: inline-block;
+	left:  183px;
+	bottom:  330px;
+	position: relative;	
+	background: transparent;	
+	min-height: 60px ;
+	min-width: 90px;
+	border: 1px solid tomato;
+
+}
+
+.Member_record a{	
+	display: inline-block;
+	color: black;
+	position: absolute;	
+	top:  10px;
+	right: 5px;
+	font-family: Copperplate,fantasy;
+}
+
+.Member_record:hover{
+
+	background-color: tomato;
+	opacity: 0.9;
 }
 
 .view_feedback{
 
+	display: inline-block;
+	left:  285px;
+	bottom:  412px;
+	position: relative;	
+	background: transparent;	
+	min-height: 60px ;
+	min-width: 90px;
+	border: 1px solid tomato;
+
+}
+
+.view_feedback a{	
+	display: inline-block;
+	color: black;
+	position: absolute;	
+	top:  10px;
+	right: 5px;
+	font-family: Copperplate,fantasy;
+}
+
+.view_feedback:hover{
+
+	background-color: tomato;
+	opacity: 0.9;
 }
